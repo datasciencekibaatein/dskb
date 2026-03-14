@@ -1,0 +1,15 @@
+# env files - never push these
+.env
+.env.local
+.env.production
+
+# dependencies
+node_modules/
+
+# Next.js build
+.next/
+out/
+
+# misc
+.DS_Store
+*.pem
