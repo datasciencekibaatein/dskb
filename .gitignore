@@ -1,7 +1,7 @@
 # env files - never push these
 .env
 .env.local
-.env.production
+.env.*
 
 # dependencies
 node_modules/
