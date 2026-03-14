@@ -39,11 +39,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          src="https://sdk.cashfree.com/js/v3/cashfree.js"
-          strategy="beforeInteractive"
-        />
-        <Script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         
       </head>
       <body className="font-body antialiased">
