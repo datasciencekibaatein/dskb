@@ -1,6 +1,8 @@
 # datasciencekibaatein 🧠📊
 
-India ka #1 Hindi Data Science platform — Next.js 14 App Router + TypeScript website.
+India ka #1 Hindi Data Science platform — Next.js 14 App Router + TypeScript website with live class enrollment, Cashfree payments, and Supabase backend.
+
+🌐 **Live:** [datasciencekibaatein.com](https://datasciencekibaatein.com) · [dskb-dhruv.netlify.app](https://dskb-dhruv.netlify.app)
 
 ---
 
@@ -20,47 +22,68 @@ npm run dev
 datasciencekibaatein/
 │
 ├── app/
-│   ├── globals.css          # All CSS: theme vars, Tailwind, animations
-│   ├── layout.tsx           # Root layout: FOUC-prevention script + ThemeProvider
-│   └── page.tsx             # Homepage (server component, composes sections)
+│   ├── globals.css               # All CSS: theme vars, Tailwind, animations
+│   ├── layout.tsx                # Root layout: FOUC-prevention + ThemeProvider + Cashfree SDK
+│   ├── page.tsx                  # Homepage (server component, composes sections)
+│   ├── payment-status/
+│   │   └── page.tsx              # Payment result page (success / failed / pending)
+│   └── live/
+│       └── [slug]/
+│           └── page.tsx          # Live course detail page + enrollment modal + Cashfree payment
+│
+├── app/api/
+│   ├── create-order/
+│   │   └── route.ts              # Creates Cashfree order + saves PENDING enrollment to Supabase
+│   ├── order-status/
+│   │   └── route.ts              # Checks Cashfree order status + updates Supabase if PAID
+│   ├── cashfree-webhook/
+│   │   └── route.ts              # Receives Cashfree payment notifications + marks PAID in Supabase
+│   └── youtube/
+│       └── route.ts              # YouTube API proxy
 │
 ├── components/
 │   ├── layout/
-│   │   ├── Navbar.tsx       # Sticky nav, mobile drawer, theme toggle
-│   │   └── Footer.tsx       # Links, socials, copyright
+│   │   ├── Navbar.tsx            # Sticky nav, mobile drawer, theme toggle
+│   │   └── Footer.tsx            # Links, socials, copyright
 │   │
 │   ├── sections/
-│   │   ├── HeroSection.tsx      # Headline (GSAP), CTA, floating keywords
-│   │   ├── StatsSection.tsx     # Animated counters (IntersectionObserver)
-│   │   ├── AboutSection.tsx     # Founder card, skills (GSAP bar fill), timeline
-│   │   ├── CoursesSection.tsx   # H-scroll cards + modal grid
-│   │   ├── TutorialsSection.tsx # YouTube cards H-scroll + modal
-│   │   └── ContactSection.tsx   # Animated form with success state
+│   │   ├── HeroSection.tsx       # Headline (GSAP), CTA, floating keywords
+│   │   ├── StatsSection.tsx      # Animated counters (IntersectionObserver)
+│   │   ├── AboutSection.tsx      # Founder card, skills (GSAP bar fill), timeline
+│   │   ├── CoursesSection.tsx    # H-scroll paid courses (Upcoming badge) + modal grid
+│   │   ├── LiveClassesSection.tsx# Live class cards grid + auth gate
+│   │   ├── TutorialsSection.tsx  # YouTube cards H-scroll + modal
+│   │   └── ContactSection.tsx    # Animated form with success state
 │   │
 │   └── ui/
-│       ├── Button.tsx           # Reusable (variants: primary/secondary/ochre/ghost)
-│       ├── Card.tsx             # Glassmorphism card
-│       ├── Modal.tsx            # Spring drop-from-top modal (ESC + outside click)
-│       ├── ParticleCanvas.tsx   # Canvas particle system with data science glyphs
-│       └── Section.tsx          # Section wrapper + SectionHeading
+│       ├── AuthModal.tsx         # Sign-in / Sign-up modal (Supabase auth)
+│       ├── Button.tsx            # Reusable (variants: primary/secondary/ochre/ghost)
+│       ├── Card.tsx              # Glassmorphism card
+│       ├── Modal.tsx             # Spring drop-from-top modal (ESC + outside click)
+│       ├── ParticleCanvas.tsx    # Canvas particle system with data science glyphs
+│       └── Section.tsx           # Section wrapper + SectionHeading
 │
 ├── hooks/
-│   ├── useTheme.tsx         # ✅ Theme provider + hook + THEME_SCRIPT (no FOUC)
-│   ├── useCounter.ts        # Animated counter (rAF + easeOutCubic)
-│   └── useInView.ts         # IntersectionObserver-based scroll trigger
+│   ├── useTheme.tsx              # Theme provider + hook + THEME_SCRIPT (no FOUC)
+│   ├── useAuth.ts                # Supabase auth hook → returns { user, loading, logout }
+│   ├── useCounter.ts             # Animated counter (rAF + easeOutCubic)
+│   └── useInView.ts              # IntersectionObserver-based scroll trigger
 │
 ├── data/
-│   ├── courses.ts           # 7 dummy courses with full metadata
-│   ├── tutorials.ts         # 8 dummy YouTube tutorials
-│   └── index.ts             # Stats, skills, nav links, topics
+│   ├── courses.ts                # Paid courses with full metadata
+│   ├── liveClasses.ts            # Live classes data — add/remove courses here
+│   ├── tutorials.ts              # YouTube tutorials
+│   └── index.ts                  # Stats, skills, nav links, topics
 │
 ├── lib/
-│   └── utils.ts             # cn(), formatNumber(), scrollToSection(), etc.
+│   └── utils.ts                  # cn(), formatNumber(), scrollToSection(), etc.
 │
 ├── types/
-│   └── index.ts             # All TypeScript interfaces
+│   └── index.ts                  # All TypeScript interfaces
 │
-├── tailwind.config.ts       # darkMode: "class" + custom palette
+├── middleware.ts                  # Bypasses localtunnel password screen for API routes
+├── netlify.toml                   # Netlify build config + Next.js plugin
+├── tailwind.config.ts             # darkMode: "class" + custom palette
 ├── tsconfig.json
 ├── next.config.js
 └── package.json
@@ -68,224 +91,125 @@ datasciencekibaatein/
 
 ---
 
-## 🌓 Theme System — How It Works (No FOUC)
+## 🔐 Environment Variables
 
-This is the key fix you requested. Here's the complete strategy:
+Create `.env.local` in project root:
 
-### Problem
-Next.js App Router renders on the server with no access to `localStorage`.
-If you set dark mode via React state, the page flashes light → dark on load.
+```env
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 
-### Solution — 3-Layer Approach
+# Cashfree
+CASHFREE_APP_ID=your_app_id
+CASHFREE_SECRET_KEY=your_secret_key
+CASHFREE_ENV=production   # or sandbox
 
-**Layer 1: Inline Blocking Script** (`app/layout.tsx`)
-```tsx
-// Runs synchronously BEFORE paint — no React hydration involved
-<script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+# App
+NEXT_PUBLIC_BASE_URL=https://datasciencekibaatein.com
+NEXT_PUBLIC_YOUTUBE_API_KEY=your_youtube_api_key
 ```
 
-The script reads `localStorage['dskb-theme']` and sets `.dark` or `.light`
-on `<html>` before any CSS or React loads. Zero flash.
+---
 
-**Layer 2: ThemeProvider** (`hooks/useTheme.tsx`)
-```tsx
-// Server renders with theme="dark" (safe default)
-// After mount, reads real value from localStorage → syncs state
-useEffect(() => {
-  const stored = localStorage.getItem('dskb-theme')
-  const resolved = stored === 'light' ? 'light' : 'dark'
-  setTheme(resolved)
-  applyTheme(resolved)
-  setMounted(true)
-}, [])
+## 💳 Payment Flow
+
+```
+User clicks Enroll
+       ↓
+AuthModal (if not logged in) → Supabase sign-in/sign-up
+       ↓
+EnrollmentModal opens → user fills details
+       ↓
+POST /api/create-order
+  → Calls Cashfree API → gets payment_session_id
+  → Saves PENDING enrollment to Supabase enrollments table
+  → Returns { order_id, payment_session_id }
+       ↓
+Browser redirects to payments.cashfree.com/#session_id
+       ↓
+User pays (UPI / Card / Net Banking)
+       ↓
+Cashfree redirects to /payment-status?order_id=...&slug=...
+       ↓
+GET /api/order-status → checks Cashfree → updates Supabase if PAID
+       ↓
+Cashfree also POSTs to /api/cashfree-webhook → marks PAID in Supabase
+       ↓
+Student receives Gmail notification with lecture links
 ```
 
-**Layer 3: `mounted` Guard** (in Navbar)
-```tsx
-// Only render the sun/moon icon after mount to avoid hydration mismatch
-{mounted && (
-  <AnimatePresence mode="wait">
-    {theme === 'dark' ? <Sun /> : <Moon />}
-  </AnimatePresence>
-)}
+---
+
+## 🗄️ Supabase Database
+
+### enrollments table
+```sql
+create table enrollments (
+  id               uuid primary key default gen_random_uuid(),
+  created_at       timestamptz default now(),
+  user_id          uuid references auth.users(id),
+  first_name       text not null,
+  last_name        text not null,
+  email            text not null,
+  mobile           text not null,
+  city             text,
+  state            text,
+  country          text default 'India',
+  course_id        text not null,
+  course_name      text not null,
+  course_slug      text not null,
+  order_id         text unique not null,
+  payment_session_id text,
+  amount           numeric not null,
+  currency         text default 'INR',
+  payment_status   text default 'PENDING',  -- PENDING | PAID | FAILED
+  paid_at          timestamptz
+);
 ```
 
-**Layer 4: Tailwind `darkMode: "class"`** (`tailwind.config.ts`)
+---
+
+## 📚 Adding a New Live Class
+
+Edit `data/liveClasses.ts` — copy the template at the bottom:
+
 ```ts
-const config: Config = {
-  darkMode: "class",  // ← reads .dark class on <html>
-  // ...
+{
+  id: "lc-004",
+  slug: "your-course-slug",          // used in URL /live/your-course-slug
+  title: "Your Course Title",
+  description: "Short card description",
+  fullDescription: "Full detail page description",
+  thumbnail: "🎯",                   // emoji shown on card
+  thumbnailBg: "linear-gradient(135deg,#000,#111,#222)",
+  instructor: "Instructor Name",
+  instructorTitle: "Role · Company",
+  duration: "6 Weeks",
+  lecturesCount: 18,
+  timing: "Sat · 7:00 PM – 9:00 PM IST",
+  startDate: "September 1, 2025",
+  enrollmentDeadline: "August 28, 2025",
+  enrollmentClosed: false,           // set true to close enrollment
+  price: 3999,
+  originalPrice: 6999,
+  discountPercent: 43,
+  level: "Intermediate",
+  tags: ["Tag1", "Tag2", "Tag3"],
+  prerequisites: ["Prerequisite 1"],
+  whatYouWillLearn: ["Outcome 1", "Outcome 2"],
+  whyThisCourse: "Why this course matters.",
+  modules: [
+    { title: "Module 1 – Title", lessons: ["Lesson A", "Lesson B"] },
+  ],
+  seatsLeft: 15,
 }
 ```
 
-**Layer 5: CSS Variables** (`globals.css`)
-```css
-:root, .dark { /* dark theme variables */ }
-.light        { /* light theme variable overrides */ }
-```
-
-### Theme Toggle Flow
-```
-User clicks toggle
-  → setTheme('light')
-  → localStorage.setItem('dskb-theme', 'light')
-  → document.documentElement.classList.remove('dark')
-  → document.documentElement.classList.add('light')
-  → Tailwind updates all dark: classes instantly
-  → CSS variables update → smooth transition
-
-User refreshes page
-  → THEME_SCRIPT runs synchronously
-  → Reads 'light' from localStorage
-  → Sets .light on <html> BEFORE paint
-  → React hydrates with matching state
-  → Zero flash ✅
-```
-
 ---
 
-## 🎨 Design System
-
-### Color Tokens
-| Token | Value | Usage |
-|-------|-------|-------|
-| `navy-950` | `#010b18` | Base background (dark) |
-| `electric-500` | `#1a6bff` | Primary accent (electric blue) |
-| `ochre-400` | `#e8890c` | Warm accent (calls to action) |
-| `teal-400` | `#14b8a6` | Secondary accent |
-
-### CSS Variables (both themes)
-```
---bg-base          Page background
---bg-surface       Section background
---bg-elevated      Card/input background
---bg-card          Glassmorphism card bg
---bg-nav           Navbar background (+ blur)
-
---text-primary     Main text
---text-secondary   Subtext
---text-muted       Placeholder / meta
---text-accent      Highlighted text
-
---accent-electric  Electric blue (#1a6bff dark / #1a5fd4 light)
---accent-ochre     Warm orange (#e8890c / #c97108)
---accent-teal      Teal green
---accent-glow      Blue glow rgba
-
---border-subtle    Very faint border
---border-dim       Visible border
---border-accent    Blue-tinted border
-
---shadow-card      Card rest shadow
---shadow-hover     Card hover shadow
-```
-
-### Reusable Component Classes
-```css
-.glass        /* Glassmorphism: backdrop-blur + semi-transparent + border */
-.glass-nav    /* Stronger blur for navbar */
-.btn-primary  /* Electric blue gradient CTA */
-.btn-secondary/* Outlined secondary */
-.btn-ochre    /* Warm orange accent button */
-.input-field  /* Styled form input with focus ring */
-.topic-badge  /* Rounded topic tag chip */
-.h-scroll     /* Horizontal scroll with scroll-snap */
-.snap-item    /* Child of h-scroll */
-.section-tag  /* Eyebrow label with lines */
-.underline-link /* Link with animated underline on hover */
-.text-gradient-blue   /* Blue gradient text */
-.text-gradient-ochre  /* Ochre gradient text */
-.text-gradient-mixed  /* Blue→ochre gradient */
-```
-
----
-
-## ⚡ Animation Guide
-
-### Framer Motion
-```tsx
-// Section fade-in
-<motion.div
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, margin: "-80px" }}
-  transition={{ duration: 0.6 }}
->
-
-// Card hover lift
-<motion.article
-  whileHover={{ y: -6, scale: 1.015 }}
-  transition={{ type: "spring", stiffness: 300, damping: 22 }}
-  style={{ willChange: "transform" }}
->
-
-// Modal spring from top
-<motion.div
-  initial={{ opacity: 0, y: -80, scale: 0.93 }}
-  animate={{ opacity: 1, y: 0, scale: 1 }}
-  exit={{ opacity: 0, y: -50, scale: 0.95 }}
-  transition={{ type: "spring", stiffness: 260, damping: 26 }}
->
-
-// Nav active indicator (shared layout)
-<motion.span layoutId="nav-indicator" />
-
-// Theme icon swap
-<AnimatePresence mode="wait">
-  <motion.span
-    key={theme}
-    initial={{ opacity: 0, rotate: -90, scale: 0.6 }}
-    animate={{ opacity: 1, rotate: 0, scale: 1 }}
-    exit={{ opacity: 0, rotate: 90, scale: 0.6 }}
-  >
-```
-
-### GSAP
-```tsx
-// Hero text entrance (staggered words)
-gsap.fromTo(words,
-  { opacity: 0, y: 40, rotateX: -25, filter: "blur(8px)" },
-  { opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)",
-    stagger: 0.1, duration: 0.8, ease: "power3.out" }
-)
-
-// Skill bar fill on scroll
-gsap.fromTo(fill, { width: "0%" }, {
-  width: `${skill.level}%`,
-  scrollTrigger: { trigger: el, start: "top 85%" }
-})
-
-// Parallax orbs
-gsap.to(".about-orb-a", {
-  y: -90,
-  scrollTrigger: { scrub: 1.5 }
-})
-
-// Feature list stagger
-gsap.fromTo(".timeline-item",
-  { opacity: 0, x: -24 },
-  { opacity: 1, x: 0, stagger: 0.14 }
-)
-```
-
----
-
-## 📦 Dependencies
-
-| Package | Purpose |
-|---------|---------|
-| `next ^14.2` | Framework (App Router) |
-| `react ^18.3` | UI runtime |
-| `typescript ^5` | Type safety |
-| `tailwindcss ^3.4` | Utility CSS (`darkMode: "class"`) |
-| `framer-motion ^11` | Component animations |
-| `gsap ^3.12` | Scroll animations (lazy imported) |
-| `lucide-react ^0.395` | Icons |
-| `clsx` + `tailwind-merge` | Class merging utility |
-
----
-
-## 🔧 Adding a New Course
+## 🔧 Adding a New Paid Course
 
 Edit `data/courses.ts`:
 
@@ -293,12 +217,12 @@ Edit `data/courses.ts`:
 {
   id: "dsk-new-course",
   title: "Your Course Title",
-  description: "Short description in Hindi",
+  description: "Short description",
   price: 999,
   originalPrice: 2999,
   discountPercent: 67,
   iconEmoji: "🎯",
-  topic: "Python",        // Must be a CourseTopic from types/index.ts
+  topic: "Python",
   level: "Beginner",
   duration: "20 hours",
   lectures: 90,
@@ -314,15 +238,81 @@ Edit `data/courses.ts`:
 
 ---
 
+## 🌓 Theme System — No FOUC
+
+5-layer approach to prevent flash of unstyled content:
+
+1. **Inline blocking script** in `layout.tsx` — reads localStorage before paint
+2. **ThemeProvider** — syncs React state after mount
+3. **`mounted` guard** — prevents hydration mismatch on icons
+4. **Tailwind `darkMode: "class"`** — reads `.dark` on `<html>`
+5. **CSS Variables** — instant theme switching via variable overrides
+
+---
+
+## 🌐 Deployment
+
+### Netlify (Production)
+- Connected to GitHub — auto deploys on every push to `main`
+- Build command: `npm run build`
+- Publish directory: `.next`
+- Plugin: `@netlify/plugin-nextjs`
+
+### Environment Variables
+Set all variables from `.env.local` in Netlify → Site Settings → Environment Variables. Trigger redeploy after any change.
+
+### Cashfree Webhook
+```
+https://datasciencekibaatein.com/api/cashfree-webhook
+```
+Events: `PAYMENT_SUCCESS_WEBHOOK`, `PAYMENT_FAILED_WEBHOOK`, `PAYMENT_USER_DROPPED_WEBHOOK`
+
+---
+
+## 🧪 Local Development with Tunnel
+
+```bash
+# Terminal 1
+npm run dev
+
+# Terminal 2
+npx localtunnel --port 3000 --subdomain your-name
+
+# Get your IP for tunnel password
+curl https://ipv4.icanhazip.com
+```
+
+Update `.env.local`:
+```env
+NEXT_PUBLIC_BASE_URL=https://your-name.loca.lt
+```
+
+---
+
+## 📦 Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| `next ^14.2` | Framework (App Router) |
+| `react ^18.3` | UI runtime |
+| `typescript ^5` | Type safety |
+| `tailwindcss ^3.4` | Utility CSS |
+| `framer-motion ^11` | Component animations |
+| `gsap ^3.12` | Scroll animations |
+| `lucide-react ^0.395` | Icons |
+| `@supabase/supabase-js` | Auth + Database |
+| `clsx` + `tailwind-merge` | Class merging |
+
+---
+
 ## ♿ Accessibility
 
-- Semantic HTML (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`)
-- ARIA: `role="dialog"`, `aria-modal`, `aria-label`, `aria-expanded`, `aria-labelledby`
-- ESC closes modal, focus trap in mobile drawer
+- Semantic HTML throughout
+- ARIA roles, labels, and modal attributes
+- ESC closes modals, focus trap in mobile drawer
 - `:focus-visible` ring on all interactive elements
-- `prefers-reduced-motion` respected by Framer Motion automatically
-- Color contrast meets WCAG AA in both themes
-- All icons have `aria-hidden="true"` or `aria-label`
+- `prefers-reduced-motion` respected by Framer Motion
+- WCAG AA color contrast in both themes
 
 ---
 
@@ -332,7 +322,7 @@ Edit `data/courses.ts`:
 |------------|---------------|
 | `sm` 640px | 2-col stats, row CTAs |
 | `md` 768px | Desktop navbar visible |
-| `lg` 1024px | 2-col about / contact |
+| `lg` 1024px | 2-col about / contact / course detail |
 | `xl` 1280px | 4-col stats |
 
 ---
