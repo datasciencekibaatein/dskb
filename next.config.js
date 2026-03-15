@@ -7,7 +7,6 @@ const nextConfig = {
   //compiler: {
   //  removeConsole: process.env.NODE_ENV === "production",
   //},
-  allowedDevOrigins: ["dskb-dhruv.loca.lt"]
 };
 
 module.exports = nextConfig;
