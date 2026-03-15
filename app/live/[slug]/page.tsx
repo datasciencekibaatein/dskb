@@ -123,6 +123,12 @@ function EnrollmentModal({
 
   // ── Cashfree payment ──
   const handlePayment = async () => {
+  
+    console.log("🔴 handlePayment triggered");
+    console.log("🔴 course:", course);
+    console.log("🔴 form:", form);
+    console.log("🔴 userId:", userId);
+
   setError("");
   setLoading(true);
   setStep("paying");
@@ -147,7 +153,10 @@ function EnrollmentModal({
         userId: userId,
       }),
     });
-
+    console.log("🔴 handlePayment triggered");
+    console.log("🔴 course:", course);
+    console.log("🔴 form:", form);
+    console.log("🔴 userId:", userId);
     const data = await res.json();
     console.log("💳 session id:", data.payment_session_id);
 

@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
       serviceRole: process.env.SUPABASE_SERVICE_ROLE_KEY ? "✅" : "❌ missing",
       cashfreeUrl: CASHFREE_BASE_URL,
     });
-
+    console.log("APP ID prefix:", process.env.CASHFREE_APP_ID?.slice(0, 8));
     const body = await req.json();
     console.log("📦 Body:", body);
 
