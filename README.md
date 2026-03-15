@@ -2,7 +2,7 @@
 
 India ka #1 Hindi Data Science platform — Next.js 14 App Router + TypeScript website with live class enrollment, Cashfree payments, and Supabase backend.
 
-🌐 **Live:** [datasciencekibaatein.com](https://datasciencekibaatein.com) · [dskb-dhruv.netlify.app](https://dskb-dhruv.netlify.app)
+🌐 **Live:** [datasciencekibaatein.com](https://datasciencekibaatein.com) 
 
 ---
 
