@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Menu, X, BarChart3, ChevronRight, LogIn, UserPlus, LogOut } from "lucide-react";
+import { Sun, Moon, Menu, X, ChevronRight, LogIn, UserPlus, LogOut } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";
 import { useTheme } from "@/hooks/useTheme";
 import { useAuth } from "@/contexts/AuthContext";
@@ -99,11 +99,17 @@ export function Navbar() {
             whileTap={{ scale: 0.97 }}
             aria-label="datasciencekibaatein — home"
           >
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center relative overflow-hidden"
-              style={{ background: "linear-gradient(135deg, #1a6bff, #0050ff)" }}>
-              <BarChart3 size={18} className="text-white relative z-10" />
-              <div className="absolute inset-0 animate-pulse-blue" />
-            </div>
+            
+            <img
+              src="/logo.png"
+              alt="datasciencekibaatein logo"
+              className="w-9 h-9"
+              style={{
+                filter: theme === "dark"
+                  ? "brightness(1.1) saturate(1.2)"
+                  : "brightness(0.85) saturate(1.3)",
+              }}
+            />
             <div className="flex flex-col -space-y-1">
               <span className="font-display font-bold text-[15px] leading-tight text-gradient-blue">datascienceki</span>
               <span className="font-display font-bold text-[15px] leading-tight text-gradient-ochre">baatein</span>
