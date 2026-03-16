@@ -225,7 +225,7 @@ export const LIVE_CLASSES: LiveClass[] = [
     startDate: "July 20, 2026",
     enrollmentDeadline: "July 18, 2026",
     enrollmentClosed: false,
-    price: 2499,
+    price: 2,
     originalPrice: 4999,
     discountPercent: 50,
     level: "Beginner",
