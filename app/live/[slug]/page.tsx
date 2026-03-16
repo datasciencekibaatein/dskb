@@ -165,7 +165,12 @@ function EnrollmentModal({
     }
 
     // Redirect to Cashfree hosted payment page
-    window.location.href = `https://payments.cashfree.com/order/#${data.payment_session_id}`;
+    const cashfree = (window as any).Cashfree({ mode: "production" });
+    cashfree.checkout({
+      paymentSessionId: data.payment_session_id,
+      redirectTarget: "_self",
+    });
+    
   } catch (err: any) {
     setError(err.message || "Payment initiation failed. Please try again.");
     setStep("form");
