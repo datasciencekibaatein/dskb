@@ -46,7 +46,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
-        
+        <Script
+          src="https://sdk.cashfree.com/js/v3/cashfree.js"
+          strategy="beforeInteractive"
+        />
       </head>
       <body className="font-body antialiased">
         <ThemeProvider>
