@@ -44,12 +44,12 @@ export const LIVE_CLASSES: LiveClass[] = [
       "This Python Bootcamp is a live, hands-on program designed to help you build real coding skills from scratch. You’ll learn through structured modules, practical exercises, and guided projects—so you’re not just understanding concepts, but actually applying them. The course focuses on clarity, problem-solving, and writing clean code, making it perfect for beginners as well as anyone looking to strengthen their fundamentals. Along with core Python concepts, you’ll gain experience working on real-world tasks and projects. By the end of the bootcamp, you’ll have the confidence to code independently, build your own projects, and a clear direction on how to move forward in your tech journey.",
     thumbnail: "🐍",
     thumbnailBg: "linear-gradient(135deg,#0f2027,#203a43,#2c5364)",
-    instructor: "Arjun Mehta",
-    instructorTitle: "Senior Data Scientist · Ex-Amazon",
+    instructor: "Dhruv Verma",
+    instructorTitle: "Data Scientist & Tutor",
     duration: "8 Weeks",
     lecturesCount: 16,
-    timing: "Sat & Sun · 8:00 PM – 10:00 PM IST",
-    startDate: "July 12, 2025",
+    timing: "Sat & Sun · 4:00 PM – 6:00 PM IST",
+    startDate: "April 10, 2026",
     enrollmentDeadline: "April 10, 2026",
     enrollmentClosed: false,
     price: 999,
@@ -234,91 +234,8 @@ export const LIVE_CLASSES: LiveClass[] = [
     seatsLeft: 20,
   },
 
-  {
-    id: "lc-002",
-    slug: "machine-learning-masterclass-live",
-    title: "Machine Learning Masterclass – Live",
-    description: "Build & deploy ML models end-to-end. Covers regression, classification, clustering, and MLOps basics.",
-    fullDescription:
-      "Go beyond tutorials. In this live masterclass you will train models on real industry data, tune hyper-parameters, prevent overfitting, and deploy your model as a REST API. Each week includes a mini-project reviewed by the instructor.",
-    thumbnail: "🤖",
-    thumbnailBg: "linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)",
-    instructor: "Priya Sharma",
-    instructorTitle: "ML Engineer · Ex-Flipkart",
-    duration: "10 Weeks",
-    lecturesCount: 30,
-    timing: "Fri & Sat · 7:30 PM – 9:30 PM IST",
-    startDate: "August 2, 2026",
-    enrollmentDeadline: "July 30, 2026",
-    enrollmentClosed: false,
-    price: 7999,
-    originalPrice: 14999,
-    discountPercent: 47,
-    level: "Intermediate",
-    tags: ["Scikit-learn", "XGBoost", "Flask", "MLOps"],
-    prerequisites: [
-      "Python basics (variables, loops, functions)",
-      "Comfortable with Pandas & NumPy",
-    ],
-    whatYouWillLearn: [
-      "Supervised learning: regression & classification",
-      "Unsupervised learning: KMeans, DBSCAN",
-      "Feature engineering & selection",
-      "Model evaluation: cross-validation, ROC-AUC",
-      "Ensemble methods: Random Forest, XGBoost",
-      "Deploy model as Flask REST API on Render",
-    ],
-    whyThisCourse:
-      "ML roles are the highest-paid in tech. This course bridges the gap between theory and real deployments that employers care about.",
-    modules: [
-      {
-        title: "Module 1 – ML Fundamentals",
-        lessons: [
-          "What is machine learning?",
-          "Bias-variance tradeoff",
-          "Train / val / test split",
-        ],
-      },
-      {
-        title: "Module 2 – Regression",
-        lessons: [
-          "Linear & polynomial regression",
-          "Regularisation (Ridge, Lasso)",
-          "Project: house price prediction",
-        ],
-      },
-      {
-        title: "Module 3 – Classification",
-        lessons: [
-          "Logistic regression",
-          "Decision trees & Random Forests",
-          "SVM intuition",
-          "Project: churn prediction",
-        ],
-      },
-      {
-        title: "Module 4 – Clustering",
-        lessons: ["KMeans & elbow method", "DBSCAN", "Hierarchical clustering"],
-      },
-      {
-        title: "Module 5 – Boosting & Ensembles",
-        lessons: ["Bagging vs boosting", "XGBoost hands-on", "LightGBM"],
-      },
-      {
-        title: "Module 6 – MLOps & Deployment",
-        lessons: [
-          "Building a Flask API",
-          "Containerising with Docker",
-          "Deploying to Render / Railway",
-          "Model monitoring basics",
-        ],
-      },
-    ],
-    seatsLeft: 6,
-  },
-
     {
-    id: "lc-003",
+    id: "lc-002",
     slug: "sql-analytics-live",
     title: "SQL for Beginners: From Zero to Data Querying",
     description: "Learn SQL from scratch and build strong querying skills through live sessions, practice, and real-world examples.",
@@ -326,16 +243,16 @@ export const LIVE_CLASSES: LiveClass[] = [
       "This beginner-friendly SQL bootcamp is designed to help you build a strong foundation in data querying from scratch. Through live interactive sessions, you will learn how to work with databases, write efficient queries, and solve real-world problems step by step. The course follows a structured path, starting from basic queries and gradually moving towards advanced concepts like joins, subqueries, case statements, and window functions. With hands-on practice, assessments, and guided learning, you will gain the confidence to work with data independently and prepare for real-world roles in analytics and tech.",
     thumbnail: "🗃️",
     thumbnailBg: "linear-gradient(135deg,#0d0d0d,#1a1a1a,#004d40)",
-    instructor: "Rahul Verma",
-    instructorTitle: "Data Scientist | 5+ years experience",
+    instructor: "Dhruv Verma",
+    instructorTitle: "Data Scientist & Tutor",
     duration: "8 Weeks",
     lecturesCount: 16,
     timing: "Flexible (based on student availability)",
-    startDate: "July 20, 2026",
+    startDate: "April 10, 2026",
     enrollmentDeadline: "July 18, 2026",
     enrollmentClosed: false,
-    price: 1499,
-    originalPrice: 2999,
+    price: 999,
+    originalPrice: 1999,
     discountPercent: 50,
     level: "Beginner",
     tags: ["SQL", "Beginner SQL", "Data Analytics", "Database", "Querying"],
@@ -489,7 +406,7 @@ export const LIVE_CLASSES: LiveClass[] = [
     seatsLeft: 20,
   },
     {
-    id: "lc-004",
+    id: "lc-003",
     slug: "advanced-sql-mastery-live",
     title: "Advanced SQL Mastery: From Foundations to Real-World Data Engineering",
     description: "Master SQL from basics to advanced concepts including joins, window functions, CTEs, procedures, and integration with Python.",
@@ -497,17 +414,17 @@ export const LIVE_CLASSES: LiveClass[] = [
       "This 3-month Advanced SQL Bootcamp is a complete, in-depth program designed to take you from foundational concepts to advanced database mastery. Starting from the basics, the course gradually progresses into complex topics such as joins, subqueries, window functions, CTEs, views, user-defined functions, stored procedures, and triggers. You will also learn how to integrate SQL with Python for real-world data workflows. With a strong focus on hands-on practice, real-world datasets, and structured modules, this course ensures you not only understand SQL but can apply it confidently in professional scenarios. The program concludes with a capstone project and career guidance to help you transition into data-focused roles.",
     thumbnail: "🧠",
     thumbnailBg: "linear-gradient(135deg,#0a0a0a,#1f1f1f,#1a237e)",
-    instructor: "Rahul Verma",
+    instructor: "Dhruv Verma",
     instructorTitle: "Data Scientist | 5+ years experience",
     duration: "12 Weeks",
     lecturesCount: 24,
     timing: "Flexible (based on student availability)",
-    startDate: "August 1, 2026",
-    enrollmentDeadline: "July 28, 2026",
+    startDate: "April 12, 2026",
+    enrollmentDeadline: "April 12, 2026",
     enrollmentClosed: false,
-    price: 4999,
-    originalPrice: 9999,
-    discountPercent: 60,
+    price: 1499,
+    originalPrice: 2999,
+    discountPercent: 50,
     level: "Advanced",
     tags: [
       "SQL",
@@ -731,6 +648,390 @@ export const LIVE_CLASSES: LiveClass[] = [
       }
     ],
     seatsLeft: 15,
+  },
+    {
+    id: "lc-004",
+    slug: "eda-data-analysis-live",
+    title: "Exploratory Data Analysis Bootcamp: From Data to Insights",
+    description: "Learn how to clean, analyze, and visualize data using NumPy, Pandas, Matplotlib, and Seaborn.",
+    fullDescription:
+      "This Exploratory Data Analysis (EDA) Bootcamp is designed to help you understand data and extract meaningful insights using Python. Starting from the basics, you will learn how to work with NumPy for numerical operations, use Pandas for data manipulation, and create powerful visualizations using Matplotlib and Seaborn. The course focuses on hands-on learning with real datasets, helping you build strong data analysis skills step by step. By the end of the program, you will be able to clean data, explore patterns, and communicate insights effectively through visualizations.",
+    thumbnail: "📊",
+    thumbnailBg: "linear-gradient(135deg,#0f2027,#203a43,#2c5364)",
+    instructor: "Rahul Verma",
+    instructorTitle: "Data Scientist | 5+ years experience",
+    duration: "6 Weeks",
+    lecturesCount: 12,
+    timing: "Flexible (based on student availability)",
+    startDate: "August 10, 2026",
+    enrollmentDeadline: "August 7, 2026",
+    enrollmentClosed: false,
+    price: 1299,
+    originalPrice: 3999,
+    discountPercent: 32,
+    level: "Beginner",
+    tags: [
+      "EDA",
+      "Data Analysis",
+      "NumPy",
+      "Pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Data Visualization"
+    ],
+    prerequisites: [
+      "Basic Python knowledge (variables, loops)",
+      "Interest in data and analytics",
+      "Willingness to practice"
+    ],
+    whatYouWillLearn: [
+      "Understanding and exploring datasets",
+      "Cleaning and preparing data",
+      "Using NumPy for numerical operations",
+      "Data manipulation with Pandas",
+      "Creating visualizations with Matplotlib and Seaborn",
+      "Finding patterns and insights in data",
+      "Working with real-world datasets",
+      "Building data analysis confidence"
+    ],
+    whyThisCourse:
+      "This course focuses on practical data analysis skills, helping you move beyond theory and actually work with real datasets to extract insights and make data-driven decisions.",
+    modules: [
+      {
+        title: "Module 1 – Introduction to Data Analysis",
+        lessons: [
+          "What is EDA",
+          "Types of data",
+          "Real-world use cases"
+        ],
+      },
+      {
+        title: "Module 2 – NumPy Basics",
+        lessons: [
+          "Arrays and operations",
+          "Indexing and slicing",
+          "Mathematical operations"
+        ],
+      },
+      {
+        title: "Module 3 – NumPy Advanced",
+        lessons: [
+          "Broadcasting",
+          "Vectorized operations",
+          "Performance benefits"
+        ],
+      },
+      {
+        title: "Module 4 – Pandas Basics",
+        lessons: [
+          "Series and DataFrames",
+          "Loading datasets",
+          "Basic operations"
+        ],
+      },
+      {
+        title: "Module 5 – Data Cleaning",
+        lessons: [
+          "Handling missing values",
+          "Removing duplicates",
+          "Data formatting"
+        ],
+      },
+      {
+        title: "Module 6 – Data Manipulation",
+        lessons: [
+          "Filtering and sorting",
+          "GroupBy operations",
+          "Aggregations"
+        ],
+      },
+      {
+        title: "Module 7 – Test 1",
+        lessons: [
+          "Concept-based MCQs",
+          "Data manipulation tasks",
+          "Evaluation of fundamentals"
+        ],
+      },
+      {
+        title: "Module 8 – Matplotlib",
+        lessons: [
+          "Basic plots (line, bar, scatter)",
+          "Customizing plots",
+          "Understanding figure structure"
+        ],
+      },
+      {
+        title: "Module 9 – Seaborn",
+        lessons: [
+          "Statistical plots",
+          "Distribution plots",
+          "Correlation visualization"
+        ],
+      },
+      {
+        title: "Module 10 – Advanced Visualization",
+        lessons: [
+          "Combining plots",
+          "Storytelling with data",
+          "Choosing right charts"
+        ],
+      },
+      {
+        title: "Module 11 – Real Dataset Analysis",
+        lessons: [
+          "End-to-end EDA",
+          "Finding insights",
+          "Drawing conclusions"
+        ],
+      },
+      {
+        title: "Module 12 – Final Project",
+        lessons: [
+          "Complete data analysis project",
+          "Visualization and reporting",
+          "Presentation of insights"
+        ],
+      },
+      {
+        title: "Module 13 – Test 2",
+        lessons: [
+          "Scenario-based questions",
+          "Data analysis problems",
+          "Project evaluation"
+        ],
+      },
+      {
+        title: "Module 14 – Career Guidance",
+        lessons: [
+          "Data analyst career path",
+          "Portfolio building",
+          "Next steps in data science"
+        ],
+      }
+    ],
+    seatsLeft: 15,
+  }
+  ,
+    {
+    id: "lc-005",
+    slug: "machine-learning-foundation-live",
+    title: "Machine Learning Foundations: Beginner to Practical ML (Live)",
+    description: "Learn the fundamentals of machine learning with hands-on practice. Covers supervised, unsupervised, and basic reinforcement learning concepts.",
+    fullDescription:
+      "This Machine Learning Bootcamp is designed for beginners who want to build a strong foundation in ML without getting overwhelmed. Through live, interactive sessions, you will understand how machine learning works, explore core algorithms, and apply them on real datasets. The course focuses on clarity, intuition, and practical understanding rather than heavy theory. You will learn supervised, unsupervised, and basic reinforcement learning concepts, along with model evaluation and simple deployment ideas. By the end of the program, you will have the confidence to start building ML models and move towards advanced topics in data science.",
+    thumbnail: "🤖",
+    thumbnailBg: "linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)",
+    instructor: "Dhruv Verma",
+    instructorTitle: "ML Engineer · 5+ years experience",
+    duration: "10–12 Weeks",
+    lecturesCount: 24,
+    timing: "Flexible (based on student availability)",
+    startDate: "April 29, 2026",
+    enrollmentDeadline: "April 20, 2026",
+    enrollmentClosed: false,
+    price: 1999,
+    originalPrice: 7999,
+    discountPercent: 40,
+    level: "Beginner",
+    tags: ["Machine Learning", "Beginner ML", "Scikit-learn", "Data Science", "AI Basics"],
+    prerequisites: [
+      "Basic Python knowledge (variables, loops, functions)",
+      "Familiarity with Pandas and NumPy (basic level)",
+      "Basic understanding of math (optional but helpful)"
+    ],
+    whatYouWillLearn: [
+      "Core machine learning concepts",
+      "Supervised learning basics",
+      "Unsupervised learning techniques",
+      "Introduction to reinforcement learning",
+      "Model evaluation and improvement",
+      "Working with real datasets",
+      "Building simple ML models",
+      "Foundation for advanced ML and AI"
+    ],
+    whyThisCourse:
+      "This course focuses on building a strong foundation in machine learning with clear explanations and practical examples, helping you understand how ML works without overwhelming complexity.",
+    modules: [
+      {
+        title: "Module 1 – Introduction to Machine Learning",
+        lessons: [
+          "What is machine learning",
+          "Types of ML (supervised, unsupervised, RL)",
+          "Real-world applications"
+        ],
+      },
+      {
+        title: "Module 2 – ML Workflow",
+        lessons: [
+          "Data collection and preprocessing",
+          "Train-test split",
+          "Basic ML pipeline"
+        ],
+      },
+      {
+        title: "Module 3 – Data Preprocessing",
+        lessons: [
+          "Handling missing values",
+          "Encoding categorical data",
+          "Feature scaling basics"
+        ],
+      },
+      {
+        title: "Module 4 – Linear Regression",
+        lessons: [
+          "Concept and intuition",
+          "Model training",
+          "Simple regression project"
+        ],
+      },
+      {
+        title: "Module 5 – Classification Basics",
+        lessons: [
+          "What is classification",
+          "Logistic regression",
+          "Binary classification problems"
+        ],
+      },
+      {
+        title: "Module 6 – K-Nearest Neighbors (KNN)",
+        lessons: [
+          "KNN algorithm intuition",
+          "Choosing K value",
+          "Practical examples"
+        ],
+      },
+      {
+        title: "Module 7 – Decision Trees",
+        lessons: [
+          "How decision trees work",
+          "Overfitting concept",
+          "Tree visualization"
+        ],
+      },
+      {
+        title: "Module 8 – Model Evaluation",
+        lessons: [
+          "Accuracy, precision, recall",
+          "Confusion matrix",
+          "Basic model comparison"
+        ],
+      },
+      {
+        title: "Module 9 – Unsupervised Learning",
+        lessons: [
+          "Clustering concept",
+          "KMeans algorithm",
+          "Real-world clustering use cases"
+        ],
+      },
+      {
+        title: "Module 10 – Dimensionality Reduction",
+        lessons: [
+          "Why reduce dimensions",
+          "PCA intuition",
+          "Simple examples"
+        ],
+      },
+      {
+        title: "Module 11 – Introduction to Reinforcement Learning",
+        lessons: [
+          "What is reinforcement learning",
+          "Basic concepts (agent, reward)",
+          "Simple examples"
+        ],
+      },
+      {
+        title: "Module 12 – Mini Project",
+        lessons: [
+          "Working on dataset",
+          "Applying ML pipeline",
+          "Model building"
+        ],
+      },
+      {
+        title: "Module 13 – Improving Models",
+        lessons: [
+          "Overfitting and underfitting",
+          "Basic tuning ideas",
+          "Improving performance"
+        ],
+      },
+      {
+        title: "Module 14 – Libraries in ML",
+        lessons: [
+          "Introduction to scikit-learn",
+          "Model implementation",
+          "Hands-on usage"
+        ],
+      },
+      {
+        title: "Module 15 – Real Dataset Practice",
+        lessons: [
+          "End-to-end workflow",
+          "Feature selection basics",
+          "Model evaluation"
+        ],
+      },
+      {
+        title: "Module 16 – Test 1",
+        lessons: [
+          "Concept-based MCQs",
+          "Basic coding questions",
+          "Evaluation of fundamentals"
+        ],
+      },
+      {
+        title: "Module 17 – Ensemble Basics",
+        lessons: [
+          "What are ensembles",
+          "Random Forest intuition",
+          "When to use them"
+        ],
+      },
+      {
+        title: "Module 18 – Model Deployment Basics",
+        lessons: [
+          "Saving models",
+          "Basic deployment idea",
+          "Intro to APIs"
+        ],
+      },
+      {
+        title: "Module 19 – ML in Real World",
+        lessons: [
+          "Use cases across industries",
+          "Problem understanding",
+          "ML project thinking"
+        ],
+      },
+      {
+        title: "Module 20 – Final Project",
+        lessons: [
+          "End-to-end ML project",
+          "Dataset analysis",
+          "Model building and evaluation"
+        ],
+      },
+      {
+        title: "Module 21 – Test 2 (Final Assessment)",
+        lessons: [
+          "Scenario-based questions",
+          "Model understanding",
+          "Project evaluation"
+        ],
+      },
+      {
+        title: "Module 22 – Career Guidance",
+        lessons: [
+          "ML career paths",
+          "Resume and portfolio",
+          "Next learning roadmap",
+          "Interview preparation basics"
+        ],
+      }
+    ],
+    seatsLeft: 10,
   }
   // ── TEMPLATE – copy-paste to add a new live class ──────────
   // {
