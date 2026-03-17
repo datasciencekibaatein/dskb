@@ -38,10 +38,10 @@ export const LIVE_CLASSES: LiveClass[] = [
   {
     id: "lc-001",
     slug: "python-for-data-science-live",
-    title: "Python for Data Science – Live Bootcamp",
-    description: "Master Python from scratch with hands-on projects, live doubt sessions, and real-world datasets.",
+    title: "Python Bootcamp 2026: Learn, Build, and Grow Your Career",
+    description: "A live, hands-on Python bootcamp designed to take you from beginner to confident coder with real projects, structured learning, and career-focused guidance.",
     fullDescription:
-      "This intensive live bootcamp takes you from zero Python knowledge to building production-ready data pipelines. Every session is live, interactive, and recorded for lifetime access. You will solve real industry problems, get mentor reviews on your code, and graduate with a portfolio project.",
+      "This Python Bootcamp is a live, instructor-led program designed to help you build strong programming skills from the ground up. Whether you're a student, working professional, or someone curious about coding, this course provides a clear and structured path to mastering Python. The program is built around a practical, hands-on approach where you’ll actively write code, solve real-world problems, and build projects instead of just watching lectures. With a carefully designed 16-module curriculum, you’ll gradually progress from understanding basic concepts like variables and loops to more advanced topics such as file handling, error handling, and object-oriented programming. Throughout the bootcamp, you’ll gain experience working with real-world scenarios, learn how to debug and write clean code, and develop strong problem-solving skills. You’ll also be introduced to commonly used libraries and understand how Python is applied in areas like automation and data handling. In addition to technical learning, the course includes assessment, project-based evaluation, and career guidance to help you move forward confidently. You’ll learn how to build a portfolio, showcase your work, and explore different career paths in tech. By the end of this bootcamp, you won’t just know Python—you’ll have the confidence and practical skills to use it in real-world situations and take the next step in your tech journey.",
     thumbnail: "🐍",
     thumbnailBg: "linear-gradient(135deg,#0f2027,#203a43,#2c5364)",
     instructor: "Arjun Mehta",
@@ -52,77 +52,194 @@ export const LIVE_CLASSES: LiveClass[] = [
     startDate: "July 12, 2025",
     enrollmentDeadline: "April 10, 2026",
     enrollmentClosed: false,
-    price: 1,
+    price: 999,
     originalPrice: 1599,
     discountPercent: 62,
     level: "Beginner",
-    tags: ["Python", "Object Oriented Programming", "Problem Solving",],
+    tags: [
+      "Python",
+      "Python Bootcamp",
+      "Learn Python",
+      "Programming",
+      "Coding for Beginners",
+      "Live Classes",
+      "Hands-on Learning",
+      "Software Development",
+      "Data Science Basics",
+      "Automation",
+      "Problem Solving",
+      "Coding Skills",
+      "Beginner Friendly",
+      "Career Growth",
+      "Tech Education",
+      "Online Learning"
+    ],
     prerequisites: [
-      "Basic computer literacy",
-      "No prior programming experience needed",
+      "No prior programming experience required",
+      "Basic computer usage (typing, file handling, browsing)",
+      "Access to a laptop or desktop with internet connection",
+      "Willingness to learn and practice consistently",
+      "Basic understanding of English (for code and instructions)",
+      "Interest in coding, problem-solving, or technology"
     ],
     whatYouWillLearn: [
-      "Python fundamentals: variables, loops, functions, OOP",
-      "Data wrangling with Pandas & NumPy",
-      "Exploratory data analysis (EDA) on real datasets",
-      "Data visualisation with Matplotlib & Seaborn",
-      "Capstone project: end-to-end EDA report",
+      "Understand Python fundamentals (variables, data types, syntax)",
+      "Apply operators and build logical conditions",
+      "Write programs using if-else statements",
+      "Use loops to automate repetitive tasks",
+      "Work with data structures (lists, tuples, sets, dictionaries)",
+      "Create reusable code using functions",
+      "Handle strings and perform text processing",
+      "Read, write, and manage files in Python",
+      "Debug code and handle errors effectively",
+      "Understand and apply Object-Oriented Programming (OOP)",
+      "Use basic libraries like NumPy and Pandas",
+      "Build real-world mini projects from scratch",
+      "Improve problem-solving and coding logic",
+      "Write clean, efficient, and structured code",
+      "Prepare a portfolio with practical projects",
+      "Understand career paths and next steps in Python"
     ],
     whyThisCourse:
-      "Python is the #1 language in data science. This live format ensures you never get stuck — mentors answer questions in real time and review your code personally.",
+      "This Python Bootcamp is designed to help you go from a complete beginner to a confident coder through live, interactive sessions where you learn by actually writing code, not just watching lectures. With a structured 16-module roadmap, hands-on projects, real-world problem solving, and continuous guidance, you’ll build practical skills that matter in today’s tech world. Along with assessments to track your progress and dedicated career guidance on portfolios, resumes, and next steps, this course ensures you don’t just learn Python—you gain the clarity, confidence, and direction to use it for real opportunities.",
     modules: [
-      {
-        title: "Module 1 – Python Foundations",
-        lessons: [
-          "Setting up your environment (Anaconda / Colab)",
-          "Variables, data types, and operators",
-          "Control flow: if/else, loops",
-          "Functions and scope",
-        ],
-      },
-      {
-        title: "Module 2 – Data Structures",
-        lessons: [
-          "Lists, tuples, and sets",
-          "Dictionaries and comprehensions",
-          "File I/O: reading CSVs",
-        ],
-      },
-      {
-        title: "Module 3 – NumPy Deep Dive",
-        lessons: [
-          "Array creation and broadcasting",
-          "Vectorised operations",
-          "Linear algebra basics",
-        ],
-      },
-      {
-        title: "Module 4 – Pandas for Data Wrangling",
-        lessons: [
-          "Series and DataFrames",
-          "Filtering, groupby, and merging",
-          "Handling missing values",
-          "Time series basics",
-        ],
-      },
-      {
-        title: "Module 5 – EDA & Visualisation",
-        lessons: [
-          "Matplotlib figure anatomy",
-          "Seaborn statistical plots",
-          "Storytelling with data",
-        ],
-      },
-      {
-        title: "Module 6 – Capstone Project",
-        lessons: [
-          "Real-world dataset walkthrough",
-          "Mentor code review",
-          "Final presentation",
-        ],
-      },
-    ],
-    seatsLeft: 12,
+    {
+      title: "Module 1: Introduction & Setup",
+      lessons: [
+        "Python overview and real-world use cases",
+        "Setting up environment (VS Code / Jupyter)",
+        "Writing your first Python program",
+        "Understanding syntax and indentation",
+      ],
+    },
+    {
+      title: "Module 2: Variables & Data Types",
+      lessons: [
+        "Variables and naming conventions",
+        "Data types (int, float, string, boolean)",
+        "Type casting",
+        "Taking user input",
+      ],
+    },
+    {
+      title: "Module 3: Operators",
+      lessons: [
+        "Arithmetic operators",
+        "Comparison operators",
+        "Logical operators",
+        "Basic problem-solving using operators",
+      ],
+    },
+    {
+      title: "Module 4: Conditional Statements",
+      lessons: [
+        "if, elif, else statements",
+        "Nested conditions",
+        "Real-world decision-making problems",
+      ],
+    },
+    {
+      title: "Module 5: Loops (Basics)",
+      lessons: [
+        "for loop",
+        "while loop",
+        "range() function",
+      ],
+    },
+    {
+      title: "Module 6: Loops (Advanced)",
+      lessons: [
+        "break, continue, pass",
+        "Nested loops",
+        "Practice problems",
+      ],
+    },
+    {
+      title: "Module 7: Lists",
+      lessons: [
+        "Creating lists",
+        "Indexing and slicing",
+        "List methods and operations",
+      ],
+    },
+    {
+      title: "Module 8: Tuples, Sets, Dictionaries",
+      lessons: [
+        "Tuples and use cases",
+        "Sets and uniqueness",
+        "Dictionaries (key-value pairs)",
+      ],
+    },
+    {
+      title: "Module 9: Functions (Core)",
+      lessons: [
+        "Defining and calling functions",
+        "Parameters and return values",
+        "Code reusability",
+      ],
+    },
+    {
+      title: "Module 10: Functions (Advanced)",
+      lessons: [
+        "Default and keyword arguments",
+        "Lambda functions (intro)",
+        "Writing modular code",
+      ],
+    },
+    {
+      title: "Module 11: Strings",
+      lessons: [
+        "String operations",
+        "String methods",
+        "String formatting",
+      ],
+    },
+    {
+      title: "Module 12: File Handling",
+      lessons: [
+        "Reading files",
+        "Writing and appending files",
+        "Working with real data",
+      ],
+    },
+    {
+      title: "Module 13: Error Handling & Debugging",
+      lessons: [
+        "Types of errors",
+        "try, except, finally",
+        "Debugging techniques",
+      ],
+    },
+    {
+      title: "Module 14: Object-Oriented Programming (OOP)",
+      lessons: [
+        "Classes and objects",
+        "__init__ method",
+        "Inheritance basics",
+        "Encapsulation concept",
+      ],
+    },
+    {
+      title: "Module 15: Libraries + Projects",
+      lessons: [
+        "Introduction to libraries",
+        "NumPy and Pandas overview",
+        "Mini project building",
+        "Real-world use cases",
+      ],
+    },
+    {
+      title: "Module 16: Final Assessment & Career Guidance",
+      lessons: [
+        "Final test (MCQ + coding)",
+        "Project evaluation",
+        "Resume building",
+        "Portfolio and GitHub",
+        "Career paths and roadmap",
+      ],
+  },
+],
+    seatsLeft: 20,
   },
 
   {
@@ -211,25 +328,25 @@ export const LIVE_CLASSES: LiveClass[] = [
   {
     id: "lc-003",
     slug: "sql-analytics-live",
-    title: "SQL for Data Analytics – Live Workshop",
+    title: "SQL for beginners ",
     description: "From basic queries to advanced window functions. Designed for analysts, PMs, and aspiring data scientists.",
     fullDescription:
       "SQL is the universal language of data. In these 4 focused live sessions you will go from SELECT * to complex CTEs, window functions, and query optimisation — solving real business questions at every step.",
     thumbnail: "🗃️",
     thumbnailBg: "linear-gradient(135deg,#0d0d0d,#1a1a1a,#004d40)",
     instructor: "Rahul Verma",
-    instructorTitle: "Analytics Lead · Ex-Zomato",
+    instructorTitle: "Datascientist 5 years of experience ",
     duration: "4 Weeks",
     lecturesCount: 12,
     timing: "Wed & Thu · 9:00 PM – 10:30 PM IST",
     startDate: "July 20, 2026",
     enrollmentDeadline: "July 18, 2026",
     enrollmentClosed: false,
-    price: 2,
+    price: 1499,
     originalPrice: 4999,
     discountPercent: 50,
     level: "Beginner",
-    tags: ["SQL", "PostgreSQL", "Analytics", "Window Functions"],
+    tags: ["SQL", "PostgreSQL", "Analytics", "Window Functions","CTE"],
     prerequisites: ["No prior SQL experience needed"],
     whatYouWillLearn: [
       "SELECT, WHERE, GROUP BY, HAVING, ORDER BY",
