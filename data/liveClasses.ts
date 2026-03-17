@@ -41,7 +41,7 @@ export const LIVE_CLASSES: LiveClass[] = [
     title: "Python Bootcamp 2026: Learn, Build, and Grow Your Career",
     description: "A live, hands-on Python bootcamp designed to take you from beginner to confident coder with real projects, structured learning, and career-focused guidance.",
     fullDescription:
-      "This Python Bootcamp is a live, instructor-led program designed to help you build strong programming skills from the ground up. Whether you're a student, working professional, or someone curious about coding, this course provides a clear and structured path to mastering Python. The program is built around a practical, hands-on approach where you’ll actively write code, solve real-world problems, and build projects instead of just watching lectures. With a carefully designed 16-module curriculum, you’ll gradually progress from understanding basic concepts like variables and loops to more advanced topics such as file handling, error handling, and object-oriented programming. Throughout the bootcamp, you’ll gain experience working with real-world scenarios, learn how to debug and write clean code, and develop strong problem-solving skills. You’ll also be introduced to commonly used libraries and understand how Python is applied in areas like automation and data handling. In addition to technical learning, the course includes assessment, project-based evaluation, and career guidance to help you move forward confidently. You’ll learn how to build a portfolio, showcase your work, and explore different career paths in tech. By the end of this bootcamp, you won’t just know Python—you’ll have the confidence and practical skills to use it in real-world situations and take the next step in your tech journey.",
+      "This Python Bootcamp is a live, hands-on program designed to help you build real coding skills from scratch. You’ll learn through structured modules, practical exercises, and guided projects—so you’re not just understanding concepts, but actually applying them. The course focuses on clarity, problem-solving, and writing clean code, making it perfect for beginners as well as anyone looking to strengthen their fundamentals. Along with core Python concepts, you’ll gain experience working on real-world tasks and projects. By the end of the bootcamp, you’ll have the confidence to code independently, build your own projects, and a clear direction on how to move forward in your tech journey.",
     thumbnail: "🐍",
     thumbnailBg: "linear-gradient(135deg,#0f2027,#203a43,#2c5364)",
     instructor: "Arjun Mehta",
@@ -83,22 +83,14 @@ export const LIVE_CLASSES: LiveClass[] = [
       "Interest in coding, problem-solving, or technology"
     ],
     whatYouWillLearn: [
-      "Understand Python fundamentals (variables, data types, syntax)",
-      "Apply operators and build logical conditions",
-      "Write programs using if-else statements",
-      "Use loops to automate repetitive tasks",
-      "Work with data structures (lists, tuples, sets, dictionaries)",
-      "Create reusable code using functions",
-      "Handle strings and perform text processing",
-      "Read, write, and manage files in Python",
-      "Debug code and handle errors effectively",
-      "Understand and apply Object-Oriented Programming (OOP)",
-      "Use basic libraries like NumPy and Pandas",
-      "Build real-world mini projects from scratch",
-      "Improve problem-solving and coding logic",
-      "Write clean, efficient, and structured code",
-      "Prepare a portfolio with practical projects",
-      "Understand career paths and next steps in Python"
+      "Strong Python fundamentals",
+      "Problem-solving and logical thinking",
+      "Writing clean and efficient code",
+      "Working with real-world data",
+      "Building practical projects",
+      "Understanding core programming concepts",
+      "Confidence to code independently",
+      "Clarity on next steps and career direction"
     ],
     whyThisCourse:
       "This Python Bootcamp is designed to help you go from a complete beginner to a confident coder through live, interactive sessions where you learn by actually writing code, not just watching lectures. With a structured 16-module roadmap, hands-on projects, real-world problem solving, and continuous guidance, you’ll build practical skills that matter in today’s tech world. Along with assessments to track your progress and dedicated career guidance on portfolios, resumes, and next steps, this course ensures you don’t just learn Python—you gain the clarity, confidence, and direction to use it for real opportunities.",
