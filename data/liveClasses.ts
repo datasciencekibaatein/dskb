@@ -317,77 +317,421 @@ export const LIVE_CLASSES: LiveClass[] = [
     seatsLeft: 6,
   },
 
-  {
+    {
     id: "lc-003",
     slug: "sql-analytics-live",
-    title: "SQL for beginners ",
-    description: "From basic queries to advanced window functions. Designed for analysts, PMs, and aspiring data scientists.",
+    title: "SQL for Beginners: From Zero to Data Querying",
+    description: "Learn SQL from scratch and build strong querying skills through live sessions, practice, and real-world examples.",
     fullDescription:
-      "SQL is the universal language of data. In these 4 focused live sessions you will go from SELECT * to complex CTEs, window functions, and query optimisation — solving real business questions at every step.",
+      "This beginner-friendly SQL bootcamp is designed to help you build a strong foundation in data querying from scratch. Through live interactive sessions, you will learn how to work with databases, write efficient queries, and solve real-world problems step by step. The course follows a structured path, starting from basic queries and gradually moving towards advanced concepts like joins, subqueries, case statements, and window functions. With hands-on practice, assessments, and guided learning, you will gain the confidence to work with data independently and prepare for real-world roles in analytics and tech.",
     thumbnail: "🗃️",
     thumbnailBg: "linear-gradient(135deg,#0d0d0d,#1a1a1a,#004d40)",
     instructor: "Rahul Verma",
-    instructorTitle: "Datascientist 5 years of experience ",
-    duration: "4 Weeks",
-    lecturesCount: 12,
-    timing: "Wed & Thu · 9:00 PM – 10:30 PM IST",
+    instructorTitle: "Data Scientist | 5+ years experience",
+    duration: "8 Weeks",
+    lecturesCount: 16,
+    timing: "Flexible (based on student availability)",
     startDate: "July 20, 2026",
     enrollmentDeadline: "July 18, 2026",
     enrollmentClosed: false,
     price: 1499,
-    originalPrice: 4999,
+    originalPrice: 2999,
     discountPercent: 50,
     level: "Beginner",
-    tags: ["SQL", "PostgreSQL", "Analytics", "Window Functions","CTE"],
-    prerequisites: ["No prior SQL experience needed"],
+    tags: ["SQL", "Beginner SQL", "Data Analytics", "Database", "Querying"],
+    prerequisites: [
+      "No prior SQL experience required",
+      "Basic computer knowledge",
+      "Willingness to practice and learn"
+    ],
     whatYouWillLearn: [
-      "SELECT, WHERE, GROUP BY, HAVING, ORDER BY",
-      "JOINs: inner, left, right, full outer",
-      "Subqueries and CTEs",
-      "Window functions: ROW_NUMBER, RANK, LAG, LEAD",
-      "Query optimisation: indexes and EXPLAIN",
-      "Real business case studies",
+      "Strong SQL fundamentals",
+      "Writing efficient queries",
+      "Working with real-world data",
+      "Problem-solving using SQL",
+      "Confidence to query databases independently",
+      "Understanding analytics workflows"
     ],
     whyThisCourse:
-      "SQL is listed in 70% of data job descriptions. Four weeks of focused live practice beats months of passive video watching.",
+      "This course focuses on building strong fundamentals through live practice and structured learning, helping you confidently use SQL for real-world data problems instead of just learning theory.",
     modules: [
       {
-        title: "Module 1 – SQL Basics",
+        title: "Module 1 – Introduction to Databases & SQL",
         lessons: [
-          "SELECT, WHERE, ORDER BY",
-          "Aggregate functions: SUM, COUNT, AVG",
-          "GROUP BY and HAVING",
+          "What is SQL and databases",
+          "Understanding tables, rows, columns",
+          "Setting up environment",
+          "Writing first SQL query"
         ],
       },
       {
-        title: "Module 2 – JOINs & Subqueries",
+        title: "Module 2 – Basic Queries",
         lessons: [
-          "INNER / LEFT / RIGHT / FULL JOIN",
-          "Subqueries in WHERE and FROM",
-          "CTEs with WITH clause",
+          "SELECT statement",
+          "Filtering with WHERE",
+          "Sorting using ORDER BY"
         ],
       },
       {
-        title: "Module 3 – Window Functions",
+        title: "Module 3 – Working with Data",
         lessons: [
-          "PARTITION BY and ORDER BY in windows",
-          "ROW_NUMBER, RANK, DENSE_RANK",
-          "LAG, LEAD for time series",
-          "Running totals and moving averages",
+          "DISTINCT values",
+          "LIMIT and filtering data",
+          "Basic data exploration"
         ],
       },
       {
-        title: "Module 4 – Performance & Projects",
+        title: "Module 4 – Aggregate Functions",
         lessons: [
-          "Indexes and query plans",
-          "EXPLAIN ANALYSE",
-          "Capstone: e-commerce analytics dashboard",
+          "COUNT, SUM, AVG, MIN, MAX",
+          "GROUP BY concept",
+          "HAVING clause"
+        ],
+      },
+      {
+        title: "Module 5 – Data Cleaning Basics",
+        lessons: [
+          "Handling NULL values",
+          "Basic string functions",
+          "Data formatting"
+        ],
+      },
+      {
+        title: "Module 6 – Practice & Problem Solving",
+        lessons: [
+          "Real-world query problems",
+          "Combining multiple concepts",
+          "Logic building with SQL"
+        ],
+      },
+      {
+        title: "Module 7 – Test 1 (Fundamentals)",
+        lessons: [
+          "MCQ based assessment",
+          "Query writing test",
+          "Concept evaluation"
+        ],
+      },
+      {
+        title: "Module 8 – Intermediate Queries",
+        lessons: [
+          "Multiple conditions",
+          "Using AND, OR",
+          "Advanced filtering"
+        ],
+      },
+      {
+        title: "Module 9 – Joins (Core Concept)",
+        lessons: [
+          "INNER JOIN",
+          "LEFT JOIN",
+          "RIGHT JOIN"
+        ],
+      },
+      {
+        title: "Module 10 – Advanced Joins",
+        lessons: [
+          "Combining multiple tables",
+          "Real-world join problems",
+          "Data relationships"
+        ],
+      },
+      {
+        title: "Module 11 – Subqueries",
+        lessons: [
+          "Subqueries in WHERE",
+          "Subqueries in FROM",
+          "Practical examples"
+        ],
+      },
+      {
+        title: "Module 12 – CASE Statements",
+        lessons: [
+          "Conditional logic in SQL",
+          "CASE WHEN usage",
+          "Real-world scenarios"
+        ],
+      },
+      {
+        title: "Module 13 – Window Functions",
+        lessons: [
+          "ROW_NUMBER and RANK",
+          "PARTITION BY concept",
+          "Basic analytical queries"
+        ],
+      },
+      {
+        title: "Module 14 – Project Building",
+        lessons: [
+          "Working on real dataset",
+          "Applying all learned concepts",
+          "End-to-end query solving"
+        ],
+      },
+      {
+        title: "Module 15 – Test 2 (Final Assessment)",
+        lessons: [
+          "Scenario-based questions",
+          "Query writing challenges",
+          "Project evaluation"
+        ],
+      },
+      {
+        title: "Module 16 – Career Guidance",
+        lessons: [
+          "SQL in real-world jobs",
+          "Resume building",
+          "Portfolio guidance",
+          "Next steps in data career"
         ],
       },
     ],
     seatsLeft: 20,
   },
-
+    {
+    id: "lc-004",
+    slug: "advanced-sql-mastery-live",
+    title: "Advanced SQL Mastery: From Foundations to Real-World Data Engineering",
+    description: "Master SQL from basics to advanced concepts including joins, window functions, CTEs, procedures, and integration with Python.",
+    fullDescription:
+      "This 3-month Advanced SQL Bootcamp is a complete, in-depth program designed to take you from foundational concepts to advanced database mastery. Starting from the basics, the course gradually progresses into complex topics such as joins, subqueries, window functions, CTEs, views, user-defined functions, stored procedures, and triggers. You will also learn how to integrate SQL with Python for real-world data workflows. With a strong focus on hands-on practice, real-world datasets, and structured modules, this course ensures you not only understand SQL but can apply it confidently in professional scenarios. The program concludes with a capstone project and career guidance to help you transition into data-focused roles.",
+    thumbnail: "🧠",
+    thumbnailBg: "linear-gradient(135deg,#0a0a0a,#1f1f1f,#1a237e)",
+    instructor: "Rahul Verma",
+    instructorTitle: "Data Scientist | 5+ years experience",
+    duration: "12 Weeks",
+    lecturesCount: 24,
+    timing: "Flexible (based on student availability)",
+    startDate: "August 1, 2026",
+    enrollmentDeadline: "July 28, 2026",
+    enrollmentClosed: false,
+    price: 4999,
+    originalPrice: 9999,
+    discountPercent: 60,
+    level: "Advanced",
+    tags: [
+      "SQL",
+      "Advanced SQL",
+      "Database",
+      "Data Engineering",
+      "Window Functions",
+      "Stored Procedures",
+      "Python Integration"
+    ],
+    prerequisites: [
+      "Basic computer knowledge",
+      "Willingness to learn and practice",
+      "No prior SQL required (course starts from basics)"
+    ],
+    whatYouWillLearn: [
+      "Complete SQL from basics to advanced",
+      "Writing complex and optimized queries",
+      "Working with large datasets",
+      "Database design and structuring",
+      "Advanced analytics using SQL",
+      "Integrating SQL with Python",
+      "Building real-world data projects",
+      "Career-ready SQL skills"
+    ],
+    whyThisCourse:
+      "This course provides a complete journey from beginner to advanced SQL with real-world applications, helping you build deep understanding and practical skills required in data and tech roles.",
+    modules: [
+      {
+        title: "Module 1 – Introduction to Databases",
+        lessons: [
+          "What is SQL and DBMS",
+          "Types of databases",
+          "Understanding tables and schemas"
+        ],
+      },
+      {
+        title: "Module 2 – Setup & Basic Queries",
+        lessons: [
+          "Environment setup",
+          "SELECT statement",
+          "Basic filtering"
+        ],
+      },
+      {
+        title: "Module 3 – Filtering & Sorting",
+        lessons: [
+          "WHERE clause",
+          "ORDER BY",
+          "LIMIT and DISTINCT"
+        ],
+      },
+      {
+        title: "Module 4 – Aggregate Functions",
+        lessons: [
+          "COUNT, SUM, AVG",
+          "MIN, MAX",
+          "GROUP BY and HAVING"
+        ],
+      },
+      {
+        title: "Module 5 – Data Cleaning",
+        lessons: [
+          "Handling NULL values",
+          "String functions",
+          "Data formatting"
+        ],
+      },
+      {
+        title: "Module 6 – Intermediate Queries",
+        lessons: [
+          "AND, OR conditions",
+          "Combining filters",
+          "Practical queries"
+        ],
+      },
+      {
+        title: "Module 7 – Joins (Core)",
+        lessons: [
+          "INNER JOIN",
+          "LEFT JOIN",
+          "RIGHT JOIN"
+        ],
+      },
+      {
+        title: "Module 8 – Joins (Advanced)",
+        lessons: [
+          "Multiple joins",
+          "Real-world join problems",
+          "Data relationships"
+        ],
+      },
+      {
+        title: "Module 9 – Subqueries",
+        lessons: [
+          "Subqueries in WHERE",
+          "Subqueries in FROM",
+          "Nested queries"
+        ],
+      },
+      {
+        title: "Module 10 – CASE Statements",
+        lessons: [
+          "Conditional logic",
+          "CASE WHEN",
+          "Business use cases"
+        ],
+      },
+      {
+        title: "Module 11 – Window Functions (Basics)",
+        lessons: [
+          "ROW_NUMBER",
+          "RANK",
+          "PARTITION BY"
+        ],
+      },
+      {
+        title: "Module 12 – Window Functions (Advanced)",
+        lessons: [
+          "LAG, LEAD",
+          "Running totals",
+          "Advanced analytics queries"
+        ],
+      },
+      {
+        title: "Module 13 – CTE (Common Table Expressions)",
+        lessons: [
+          "WITH clause",
+          "Recursive CTE basics",
+          "Improving query readability"
+        ],
+      },
+      {
+        title: "Module 14 – Views",
+        lessons: [
+          "Creating views",
+          "Updating views",
+          "Use cases"
+        ],
+      },
+      {
+        title: "Module 15 – Indexing & Optimization",
+        lessons: [
+          "Indexes",
+          "Query optimization",
+          "EXPLAIN basics"
+        ],
+      },
+      {
+        title: "Module 16 – User Defined Functions",
+        lessons: [
+          "Creating functions",
+          "Using functions",
+          "Real use cases"
+        ],
+      },
+      {
+        title: "Module 17 – Stored Procedures",
+        lessons: [
+          "Creating procedures",
+          "Parameters",
+          "Execution flow"
+        ],
+      },
+      {
+        title: "Module 18 – Triggers",
+        lessons: [
+          "What are triggers",
+          "Creating triggers",
+          "Automation use cases"
+        ],
+      },
+      {
+        title: "Module 19 – Transactions",
+        lessons: [
+          "ACID properties",
+          "COMMIT and ROLLBACK",
+          "Transaction control"
+        ],
+      },
+      {
+        title: "Module 20 – Database Design",
+        lessons: [
+          "Normalization basics",
+          "Designing tables",
+          "Relationships"
+        ],
+      },
+      {
+        title: "Module 21 – SQL with Python",
+        lessons: [
+          "Connecting SQL with Python",
+          "Running queries via Python",
+          "Basic data workflows"
+        ],
+      },
+      {
+        title: "Module 22 – Real-World Data Workflows",
+        lessons: [
+          "Handling large datasets",
+          "Combining SQL and analysis",
+          "End-to-end workflow"
+        ],
+      },
+      {
+        title: "Module 23 – Capstone Project",
+        lessons: [
+          "Real dataset project",
+          "Applying all concepts",
+          "Project presentation"
+        ],
+      },
+      {
+        title: "Module 24 – Career Guidance",
+        lessons: [
+          "SQL career paths",
+          "Resume and portfolio",
+          "Interview preparation",
+          "Next steps roadmap"
+        ],
+      }
+    ],
+    seatsLeft: 15,
+  }
   // ── TEMPLATE – copy-paste to add a new live class ──────────
   // {
   //   id: "lc-004",
