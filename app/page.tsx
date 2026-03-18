@@ -23,8 +23,8 @@ export default function HomePage() {
       <HeroSection />
       <StatsSection />
       <AboutSection />
-      <CoursesSection />
       <LiveClassesSection />
+      <CoursesSection />
       <TutorialsSection />
       <ContactSection />
 
