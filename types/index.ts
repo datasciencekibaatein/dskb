@@ -69,9 +69,17 @@ export interface Stat {
 }
 
 // ─── Nav Types ───────────────────────────────────────────────────────────────
+export interface NavDropdownItem {
+  label: string;
+  href: string;
+  description?: string;
+  icon?: string;
+}
+
 export interface NavLink {
   label: string;
   href: string;
+  dropdown?: NavDropdownItem[];
 }
 
 // ─── Contact Form Types ──────────────────────────────────────────────────────

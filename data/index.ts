@@ -43,13 +43,6 @@ export const SKILLS: Skill[] = [
   { name: "Data Visualization", level: 93, emoji: "🎨", color: "ochre" },
 ];
 
-export const NAV_LINKS: NavLink[] = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Courses", href: "#courses" },
-  { label: "Tutorials", href: "#tutorials" },
-  { label: "Contact", href: "#contact" },
-];
 
 export const TOPICS = [
   "Python",
@@ -61,3 +54,28 @@ export const TOPICS = [
   "Statistics",
   "AI",
 ] as const;
+
+export const NAV_LINKS: NavLink[] = [
+  { label: "Home",      href: "#home"      },
+  { label: "About",     href: "#about"     },
+  {
+    label: "Courses",
+    href:  "#live-classes",
+    dropdown: [
+      {
+        label:       "Live Classes",
+        href:        "#live-classes",
+        description: "Interactive live sessions with real-time doubt resolution",
+        icon:        "🔴",
+      },
+      {
+        label:       "Paid Courses",
+        href:        "#courses",
+        description: "Self-paced video courses with lifetime access",
+        icon:        "🎓",
+      },
+    ],
+  },
+  { label: "Tutorials", href: "#tutorials" },
+  { label: "Contact",   href: "#contact"   },
+];

@@ -42,7 +42,7 @@ export const LIVE_CLASSES: LiveClass[] = [
     description: "A live, hands-on Python bootcamp designed to take you from beginner to confident coder with real projects, structured learning, and career-focused guidance.",
     fullDescription:
       "This Python Bootcamp is a live, hands-on program designed to help you build real coding skills from scratch. You’ll learn through structured modules, practical exercises, and guided projects—so you’re not just understanding concepts, but actually applying them. The course focuses on clarity, problem-solving, and writing clean code, making it perfect for beginners as well as anyone looking to strengthen their fundamentals. Along with core Python concepts, you’ll gain experience working on real-world tasks and projects. By the end of the bootcamp, you’ll have the confidence to code independently, build your own projects, and a clear direction on how to move forward in your tech journey.",
-    thumbnail: "🐍",
+    thumbnail: "https://raw.githubusercontent.com/datasciencekibaatein/thumnails/5608f98cb8b9e46bff7e2d86aee8da6c209d4d0b/python-bootcamp.png",
     thumbnailBg: "linear-gradient(135deg,#0f2027,#203a43,#2c5364)",
     instructor: "Dhruv Verma",
     instructorTitle: "Data Scientist & Tutor",
@@ -241,7 +241,7 @@ export const LIVE_CLASSES: LiveClass[] = [
     description: "Learn SQL from scratch and build strong querying skills through live sessions, practice, and real-world examples.",
     fullDescription:
       "This beginner-friendly SQL bootcamp is designed to help you build a strong foundation in data querying from scratch. Through live interactive sessions, you will learn how to work with databases, write efficient queries, and solve real-world problems step by step. The course follows a structured path, starting from basic queries and gradually moving towards advanced concepts like joins, subqueries, case statements, and window functions. With hands-on practice, assessments, and guided learning, you will gain the confidence to work with data independently and prepare for real-world roles in analytics and tech.",
-    thumbnail: "🗃️",
+    thumbnail: "https://raw.githubusercontent.com/datasciencekibaatein/thumnails/main/sql-bootcamp.png",
     thumbnailBg: "linear-gradient(135deg,#0d0d0d,#1a1a1a,#004d40)",
     instructor: "Dhruv Verma",
     instructorTitle: "Data Scientist & Tutor",
@@ -412,7 +412,7 @@ export const LIVE_CLASSES: LiveClass[] = [
     description: "Master SQL from basics to advanced concepts including joins, window functions, CTEs, procedures, and integration with Python.",
     fullDescription:
       "This 3-month Advanced SQL Bootcamp is a complete, in-depth program designed to take you from foundational concepts to advanced database mastery. Starting from the basics, the course gradually progresses into complex topics such as joins, subqueries, window functions, CTEs, views, user-defined functions, stored procedures, and triggers. You will also learn how to integrate SQL with Python for real-world data workflows. With a strong focus on hands-on practice, real-world datasets, and structured modules, this course ensures you not only understand SQL but can apply it confidently in professional scenarios. The program concludes with a capstone project and career guidance to help you transition into data-focused roles.",
-    thumbnail: "🧠",
+    thumbnail: "https://raw.githubusercontent.com/datasciencekibaatein/thumnails/main/sql-advanced.png",
     thumbnailBg: "linear-gradient(135deg,#0a0a0a,#1f1f1f,#1a237e)",
     instructor: "Dhruv Verma",
     instructorTitle: "Data Scientist | 5+ years experience",
@@ -656,7 +656,7 @@ export const LIVE_CLASSES: LiveClass[] = [
     description: "Learn how to clean, analyze, and visualize data using NumPy, Pandas, Matplotlib, and Seaborn.",
     fullDescription:
       "This Exploratory Data Analysis (EDA) Bootcamp is designed to help you understand data and extract meaningful insights using Python. Starting from the basics, you will learn how to work with NumPy for numerical operations, use Pandas for data manipulation, and create powerful visualizations using Matplotlib and Seaborn. The course focuses on hands-on learning with real datasets, helping you build strong data analysis skills step by step. By the end of the program, you will be able to clean data, explore patterns, and communicate insights effectively through visualizations.",
-    thumbnail: "📊",
+    thumbnail: "https://raw.githubusercontent.com/datasciencekibaatein/thumnails/main/eda-bootcamp.png",
     thumbnailBg: "linear-gradient(135deg,#0f2027,#203a43,#2c5364)",
     instructor: "Dhruv Verma",
     instructorTitle: "Data Scientist | 5+ years experience",
@@ -820,7 +820,7 @@ export const LIVE_CLASSES: LiveClass[] = [
     description: "Learn the fundamentals of machine learning with hands-on practice. Covers supervised, unsupervised, and basic reinforcement learning concepts.",
     fullDescription:
       "This Machine Learning Bootcamp is designed for beginners who want to build a strong foundation in ML without getting overwhelmed. Through live, interactive sessions, you will understand how machine learning works, explore core algorithms, and apply them on real datasets. The course focuses on clarity, intuition, and practical understanding rather than heavy theory. You will learn supervised, unsupervised, and basic reinforcement learning concepts, along with model evaluation and simple deployment ideas. By the end of the program, you will have the confidence to start building ML models and move towards advanced topics in data science.",
-    thumbnail: "🤖",
+    thumbnail: "https://raw.githubusercontent.com/datasciencekibaatein/thumnails/main/ml-bootcamp.png",
     thumbnailBg: "linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)",
     instructor: "Dhruv Verma",
     instructorTitle: "ML Engineer · 5+ years experience",

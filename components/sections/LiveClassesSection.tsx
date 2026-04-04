@@ -87,9 +87,18 @@ function LiveClassCard({ lc }: { lc: LiveClass }) {
           </span>
 
           {/* Emoji icon */}
-          <div className="text-6xl transition-transform duration-500 group-hover:scale-110" aria-hidden>
-            {lc.thumbnail}
-          </div>
+          {/* Thumbnail — image URL or emoji fallback */}
+          {lc.thumbnail.startsWith("http") ? (
+            <img
+              src={lc.thumbnail}
+              alt={lc.title}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="text-6xl transition-transform duration-500 group-hover:scale-110" aria-hidden>
+              {lc.thumbnail}
+            </div>
+          )}
 
           {/* bottom gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-surface)]/80 to-transparent" />
