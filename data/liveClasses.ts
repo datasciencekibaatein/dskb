@@ -1038,7 +1038,7 @@ export const LIVE_CLASSES: LiveClass[] = [
   "title": "Excel Basic to Dashboard Mastery",
   "description": "Learn Excel from scratch to advanced reporting with formulas, lookups, pivot tables, validation, and interactive dashboards.",
   "fullDescription": "A complete beginner-friendly Excel program designed for students, analysts, and professionals who want to master Microsoft Excel for real-world work. This course starts from the fundamentals of Excel and gradually takes you into referencing, formulas, logical functions, lookups, conditional formatting, pivot tables, data cleaning, reporting, and dashboard creation. By the end of the course, you will confidently build automated reports, manage business data, and create professional dashboards.",
-  "thumbnail": "📊",
+  "thumbnail": "https://raw.githubusercontent.com/datasciencekibaatein/thumnails/main/excel_live_classes.png",
   "thumbnailBg": "linear-gradient(135deg,#0f9d58,#34a853,#1e8e3e)",
   "instructor": "Brenzee Academy",
   "instructorTitle": "Data Skills & Productivity Training",
