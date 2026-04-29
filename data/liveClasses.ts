@@ -1032,7 +1032,101 @@ export const LIVE_CLASSES: LiveClass[] = [
       }
     ],
     seatsLeft: 10,
-  }
+  },{
+  "id": "lc-006",
+  "slug": "excel-basic-to-dashboard-mastery",
+  "title": "Excel Basic to Dashboard Mastery",
+  "description": "Learn Excel from scratch to advanced reporting with formulas, lookups, pivot tables, validation, and interactive dashboards.",
+  "fullDescription": "A complete beginner-friendly Excel program designed for students, analysts, and professionals who want to master Microsoft Excel for real-world work. This course starts from the fundamentals of Excel and gradually takes you into referencing, formulas, logical functions, lookups, conditional formatting, pivot tables, data cleaning, reporting, and dashboard creation. By the end of the course, you will confidently build automated reports, manage business data, and create professional dashboards.",
+  "thumbnail": "📊",
+  "thumbnailBg": "linear-gradient(135deg,#0f9d58,#34a853,#1e8e3e)",
+  "instructor": "Brenzee Academy",
+  "instructorTitle": "Data Skills & Productivity Training",
+  "duration": "1 Week",
+  "lecturesCount": 5,
+  "timing": "Sat · 7:00 PM – 9:00 PM IST",
+  "startDate": "September 1, 2025",
+  "enrollmentDeadline": "August 28, 2025",
+  "enrollmentClosed": false,
+  "price": 499,
+  "originalPrice": 999,
+  "discountPercent": 50,
+  "level": "Intermediate",
+  "tags": [
+    "Excel Basics",
+    "Formulas",
+    "Lookups",
+    "Pivot Tables",
+    "Dashboards",
+    "Data Cleaning"
+  ],
+  "prerequisites": [
+    "Laptop/Desktop with Microsoft Excel",
+    "No prior Excel knowledge required",
+    "Willingness to practice"
+  ],
+  "whatYouWillLearn": [
+    "Navigate Excel like a professional",
+    "Use formulas and functions confidently",
+    "Master relative, absolute, and mixed referencing",
+    "Perform lookups using VLOOKUP, XLOOKUP, INDEX-MATCH",
+    "Create dynamic Pivot Tables and Pivot Charts",
+    "Apply conditional formatting for insights",
+    "Use text, date, and numeric functions",
+    "Create drop-downs using Data Validation",
+    "Clean and organize messy datasets",
+    "Build interactive dashboards for reporting"
+  ],
+  "whyThisCourse": "Excel is one of the most demanded business skills across every industry. Whether you are a student, job seeker, accountant, analyst, HR professional, or entrepreneur, Excel helps you work faster, make better decisions, and stand out professionally. This course focuses on practical job-ready skills instead of theory only.",
+  "modules": [
+    {
+      "title": "Lecture 1 – Excel Fundamentals",
+      "lessons": [
+        "Excel Interface",
+        "Rows, Columns, Cells",
+        "Formatting Basics",
+        "Shortcuts"
+      ]
+    },
+    {
+      "title": "Lecture 2 – Formulas & Referencing",
+      "lessons": [
+        "Formula Basics",
+        "Relative Reference",
+        "Absolute Reference",
+        "Mixed Reference"
+      ]
+    },
+    {
+      "title": "Lecture 3 – Functions & Lookups",
+      "lessons": [
+        "SUM, AVERAGE, COUNT",
+        "IF, AND, OR",
+        "VLOOKUP",
+        "XLOOKUP"
+      ]
+    },
+    {
+      "title": "Lecture 4 – Data Tools",
+      "lessons": [
+        "Conditional Formatting",
+        "Data Validation",
+        "Text Functions",
+        "Sorting & Filtering"
+      ]
+    },
+    {
+      "title": "Lecture 5 – Pivot Tables & Dashboards",
+      "lessons": [
+        "Pivot Tables",
+        "Pivot Charts",
+        "Slicers",
+        "Dashboard Creation"
+      ]
+    }
+  ],
+  "seatsLeft": 15
+}
   // ── TEMPLATE – copy-paste to add a new live class ──────────
   // {
   //   id: "lc-004",
