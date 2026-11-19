@@ -1,8 +1,8 @@
 const styles = {
-  comingSoon: "bg-white text-navy-950 ring-1 ring-line", // readable on dark & light
+  comingSoon: "bg-white text-navy-950 ring-1 ring-black/5", // sits on navy thumbnails/banners in both modes
   live: "bg-cyan text-navy-950",
-  recorded: "bg-slate-100 text-slate-700",
-  neutral: "bg-navy-950/[0.06] text-navy-800",
+  recorded: "bg-subtle text-body",
+  neutral: "bg-cyan/10 text-teal-text ring-1 ring-cyan/20",
   onDark: "bg-white/10 text-white ring-1 ring-white/15", // for badges on navy backgrounds
 };
 

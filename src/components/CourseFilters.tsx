@@ -19,12 +19,12 @@ function Select({
   options: { value: string; label: string }[];
 }) {
   return (
-    <label className="flex flex-col gap-1 text-sm font-medium text-navy-950">
+    <label className="flex flex-col gap-1 text-sm font-medium text-heading">
       {label}
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="rounded-lg border border-line bg-card px-3 py-2 text-navy-950 transition-colors duration-200 focus:border-ocean focus:outline-none focus:ring-2 focus:ring-cyan/40"
+        className="rounded-lg border border-line bg-card px-3 py-2 text-heading transition-colors duration-200 focus:border-teal-text focus:outline-none focus:ring-2 focus:ring-cyan/40"
       >
         <option value={ALL}>All</option>
         {options.map((o) => (
@@ -84,13 +84,13 @@ export default function CourseFilters() {
             setLanguage(ALL);
             setType(ALL);
           }}
-          className="rounded-lg border border-line px-3 py-2 text-sm font-medium text-navy-950 transition-colors duration-200 hover:bg-page disabled:cursor-not-allowed disabled:text-gray-500"
+          className="rounded-lg border border-line px-3 py-2 text-sm font-medium text-heading transition-colors duration-200 hover:bg-subtle disabled:cursor-not-allowed disabled:text-muted disabled:opacity-60"
         >
           Clear filters
         </button>
       </div>
 
-      <p className="mt-6 text-sm text-gray-600" aria-live="polite">
+      <p className="mt-6 text-sm text-muted" aria-live="polite">
         Showing {filtered.length} of {courses.length} courses
       </p>
 
@@ -118,7 +118,7 @@ export default function CourseFilters() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={cardTransition}
-            className="mt-4 rounded-xl border border-dashed border-line bg-card p-10 text-center text-gray-600"
+            className="mt-4 rounded-xl border border-dashed border-line bg-card p-10 text-center text-body"
           >
             No courses match these filters yet.
           </motion.p>

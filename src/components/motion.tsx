@@ -16,6 +16,9 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
 }
 
 // Fades + slides a block up when it scrolls into view.
+// Server and browser always render the same element (avoids hydration
+// mismatches). With "reduce motion" on, the [data-reveal] CSS rule in
+// globals.css forces these blocks fully visible with no movement.
 export function Reveal({
   children,
   className,
@@ -25,10 +28,9 @@ export function Reveal({
   className?: string;
   delay?: number;
 }) {
-  const reduce = useReducedMotion();
-  if (reduce) return <div className={className}>{children}</div>;
   return (
     <motion.div
+      data-reveal
       className={className}
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -51,10 +53,9 @@ const staggerChild: Variants = {
 };
 
 export function Stagger({ children, className }: { children: React.ReactNode; className?: string }) {
-  const reduce = useReducedMotion();
-  if (reduce) return <div className={className}>{children}</div>;
   return (
     <motion.div
+      data-reveal
       className={className}
       variants={staggerParent}
       initial="hidden"
@@ -67,10 +68,8 @@ export function Stagger({ children, className }: { children: React.ReactNode; cl
 }
 
 export function StaggerItem({ children, className }: { children: React.ReactNode; className?: string }) {
-  const reduce = useReducedMotion();
-  if (reduce) return <div className={className}>{children}</div>;
   return (
-    <motion.div className={className} variants={staggerChild}>
+    <motion.div data-reveal className={className} variants={staggerChild}>
       {children}
     </motion.div>
   );

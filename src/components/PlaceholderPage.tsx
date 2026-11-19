@@ -5,8 +5,8 @@ export default function PlaceholderPage({ title, children }: { title: string; ch
   return (
     <div className="mx-auto max-w-3xl px-4 py-14">
       <Reveal>
-        <h1 className="text-3xl font-bold text-navy-950">{title}</h1>
-        <div className="mt-4 space-y-4 text-gray-700">
+        <h1 className="text-3xl font-bold text-heading">{title}</h1>
+        <div className="mt-4 space-y-4 text-body">
           {children ?? <p>This page is a placeholder. Content coming soon.</p>}
         </div>
       </Reveal>

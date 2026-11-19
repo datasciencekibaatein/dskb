@@ -34,6 +34,7 @@ export interface Course {
   priceINR: number;
   originalPriceINR?: number; // shown struck-through if discounted
   thumbnail: string; // placeholder path in /public/thumbnails
+  thumbnailLabel: string; // short text shown on the thumbnail placeholder
   instructor: string;
   whatYouWillLearn: string[];
   includes: string[];
@@ -57,6 +58,7 @@ export const courses: Course[] = [
     priceINR: 499,
     originalPriceINR: 1499,
     thumbnail: "/thumbnails/python.png",
+    thumbnailLabel: "Python",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
       "Python basics: variables, data types, loops, functions",
@@ -103,6 +105,7 @@ export const courses: Course[] = [
     priceINR: 699,
     originalPriceINR: 1999,
     thumbnail: "/thumbnails/numpy-pandas.png",
+    thumbnailLabel: "NumPy & Pandas",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
       "NumPy arrays, indexing, broadcasting",
@@ -148,6 +151,7 @@ export const courses: Course[] = [
     priceINR: 599,
     originalPriceINR: 1499,
     thumbnail: "/thumbnails/visualization.png",
+    thumbnailLabel: "Visualization",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
       "Line, bar, scatter, histogram and box plots",
@@ -190,6 +194,7 @@ export const courses: Course[] = [
     priceINR: 799,
     originalPriceINR: 1999,
     thumbnail: "/thumbnails/feature-engineering.png",
+    thumbnailLabel: "Feature Engineering",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
       "Missing value imputation techniques",
@@ -236,6 +241,7 @@ export const courses: Course[] = [
     priceINR: 1999,
     originalPriceINR: 4999,
     thumbnail: "/thumbnails/machine-learning.png",
+    thumbnailLabel: "Machine Learning",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
       "Regression and classification foundations",
@@ -286,6 +292,7 @@ export const courses: Course[] = [
     priceINR: 2499,
     originalPriceINR: 5999,
     thumbnail: "/thumbnails/deep-learning.png",
+    thumbnailLabel: "Deep Learning",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
       "Perceptron to multi-layer ANNs, from scratch",
@@ -339,6 +346,7 @@ export const courses: Course[] = [
     priceINR: 4999,
     originalPriceINR: 9999,
     thumbnail: "/thumbnails/bootcamp.png",
+    thumbnailLabel: "Live Bootcamp",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
       "Python, NumPy, Pandas and visualization — live",

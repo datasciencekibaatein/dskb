@@ -6,6 +6,7 @@ import { useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   const pathname = usePathname();
@@ -16,51 +17,54 @@ export default function Header() {
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 8));
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
     <header
       className={`sticky top-0 z-40 border-b transition-[background-color,box-shadow,border-color] duration-300 ease-out ${
         scrolled || open
-          ? "border-line/80 bg-white/75 shadow-[0_4px_20px_-12px_rgba(10,25,49,0.25)] backdrop-blur-md"
-          : "border-line bg-white"
+          ? "border-line/80 bg-card/75 shadow-[0_4px_20px_-12px_rgba(10,25,49,0.25)] backdrop-blur-md dark:shadow-[0_4px_20px_-12px_rgba(0,0,0,0.6)]"
+          : "border-line bg-card"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Logo />
 
-        {/* Desktop nav */}
-        <nav className="hidden gap-7 md:flex">
-          {siteConfig.nav.map((item) => {
-            const active = isActive(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={active ? "page" : undefined}
-                className={`nav-link text-sm font-medium transition-colors duration-200 hover:text-navy-950 ${
-                  active ? "text-navy-950" : "text-gray-600"
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+        <div className="flex items-center gap-2 md:gap-6">
+          {/* Desktop nav */}
+          <nav className="hidden gap-7 md:flex">
+            {siteConfig.nav.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`nav-link text-sm font-medium transition-colors duration-200 hover:text-heading ${
+                    active ? "text-heading" : "text-body"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          onClick={() => setOpen((o) => !o)}
-          className="rounded-md p-2 text-navy-950 md:hidden"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
-          </svg>
-        </button>
+          <ThemeToggle />
+
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            className="rounded-md p-2 text-heading md:hidden"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile nav */}
@@ -82,7 +86,7 @@ export default function Header() {
                   onClick={() => setOpen(false)}
                   aria-current={active ? "page" : undefined}
                   className={`block border-l-2 py-3 pl-3 text-base font-medium ${
-                    active ? "border-cyan text-navy-950" : "border-transparent text-gray-600"
+                    active ? "border-cyan text-heading" : "border-transparent text-body"
                   }`}
                 >
                   {item.label}

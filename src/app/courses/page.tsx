@@ -13,8 +13,8 @@ export default function CoursesPage() {
       <AmbientBlobs />
       <div className="relative mx-auto max-w-6xl px-4 py-10">
         <Reveal>
-          <h1 className="text-3xl font-bold text-navy-950">All courses</h1>
-          <p className="mt-2 text-gray-600">Filter by category, language or format.</p>
+          <h1 className="text-3xl font-bold text-heading">All courses</h1>
+          <p className="mt-2 text-body">Filter by category, language or format.</p>
         </Reveal>
         <CourseFilters />
       </div>

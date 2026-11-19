@@ -33,7 +33,7 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
   return (
     <>
       {/* Top banner */}
-      <section className="bg-navy-950 text-white">
+      <section className="bg-navy-950 text-white dark:border-b dark:border-cyan/15">
         <Reveal className="mx-auto max-w-6xl px-4 py-10">
           <Link
             href="/courses"
@@ -52,8 +52,8 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
           <h1 className="mt-4 max-w-3xl text-2xl font-bold leading-tight sm:text-4xl">{course.title}</h1>
           <p className="mt-3 max-w-3xl text-white/80">{course.subtitle}</p>
           <p className="mt-4 text-sm text-white/75">
-            {course.level} · {formatMinutes(getTotalMinutes(course))} · {lessonCount} lessons · by{" "}
-            {course.instructor}
+            {course.level} · {formatMinutes(getTotalMinutes(course))} · {lessonCount}{" "}
+            {lessonCount === 1 ? "lesson" : "lessons"} · by {course.instructor}
           </p>
         </Reveal>
       </section>
@@ -63,7 +63,7 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
         <Reveal className="lg:order-2">
           <aside className="lg:sticky lg:top-24">
             <div className="overflow-hidden rounded-xl border border-line bg-card shadow-sm">
-              <Thumbnail label={course.category} />
+              <Thumbnail label={course.thumbnailLabel} />
               <div className="space-y-4 p-5">
                 <Price course={course} size="lg" />
                 <button type="button" disabled title="Payments coming soon" className="btn-primary w-full">
@@ -72,12 +72,12 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
                     →
                   </span>
                 </button>
-                <p className="text-center text-xs text-gray-600">
+                <p className="text-center text-xs text-muted">
                   {comingSoon ? "This course is coming soon." : "Enrolment opens soon."}
                 </p>
                 <div>
-                  <h3 className="mb-2 text-sm font-semibold text-navy-950">This course includes</h3>
-                  <ul className="space-y-1.5 text-sm text-gray-700">
+                  <h3 className="mb-2 text-sm font-semibold text-heading">This course includes</h3>
+                  <ul className="space-y-1.5 text-sm text-body">
                     {course.includes.map((item) => (
                       <li key={item} className="flex gap-2">
                         <span className="text-teal-text" aria-hidden>
@@ -97,10 +97,10 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
         <div className="space-y-8 lg:order-1 lg:col-span-2">
           <Reveal>
             <section className="rounded-xl border border-line bg-card p-6">
-              <h2 className="text-xl font-bold text-navy-950">What you&apos;ll learn</h2>
+              <h2 className="text-xl font-bold text-heading">What you&apos;ll learn</h2>
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                 {course.whatYouWillLearn.map((item) => (
-                  <li key={item} className="flex gap-2 text-sm text-gray-700">
+                  <li key={item} className="flex gap-2 text-sm text-body">
                     <span className="text-teal-text" aria-hidden>
                       ✓
                     </span>
@@ -115,27 +115,27 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
             <Reveal>
               <section className="rounded-xl border border-line border-l-4 border-l-cyan bg-card p-6">
                 <div className="flex items-center gap-3">
-                  <h2 className="text-xl font-bold text-navy-950">Live schedule</h2>
+                  <h2 className="text-xl font-bold text-heading">Live schedule</h2>
                   <Badge variant="live">● Live</Badge>
                 </div>
                 <dl className="mt-4 grid gap-4 text-sm sm:grid-cols-2">
                   <div>
-                    <dt className="text-gray-600">Starts</dt>
-                    <dd className="font-semibold text-navy-950">
+                    <dt className="text-muted">Starts</dt>
+                    <dd className="font-semibold text-heading">
                       {formatDate(course.liveSchedule.startDate)}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-gray-600">Days</dt>
-                    <dd className="font-semibold text-navy-950">{course.liveSchedule.days}</dd>
+                    <dt className="text-muted">Days</dt>
+                    <dd className="font-semibold text-heading">{course.liveSchedule.days}</dd>
                   </div>
                   <div>
-                    <dt className="text-gray-600">Time</dt>
-                    <dd className="font-semibold text-navy-950">{course.liveSchedule.time}</dd>
+                    <dt className="text-muted">Time</dt>
+                    <dd className="font-semibold text-heading">{course.liveSchedule.time}</dd>
                   </div>
                   <div>
-                    <dt className="text-gray-600">Seats</dt>
-                    <dd className="font-semibold text-navy-950">{course.liveSchedule.seats}</dd>
+                    <dt className="text-muted">Seats</dt>
+                    <dd className="font-semibold text-heading">{course.liveSchedule.seats}</dd>
                   </div>
                 </dl>
               </section>
@@ -144,18 +144,18 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
 
           <Reveal>
             <section>
-              <h2 className="text-xl font-bold text-navy-950">Curriculum</h2>
-              <p className="mt-1 text-sm text-gray-600">
-                {course.curriculum.length} sections · {lessonCount} lessons
+              <h2 className="text-xl font-bold text-heading">Curriculum</h2>
+              <p className="mt-1 text-sm text-muted">
+                {course.curriculum.length} sections · {lessonCount} {lessonCount === 1 ? "lesson" : "lessons"}
               </p>
               <div className="mt-4 divide-y divide-line overflow-hidden rounded-xl border border-line bg-card">
                 {course.curriculum.map((section, i) => (
                   // <details> is a built-in collapsible element — no JavaScript needed.
                   <details key={section.title} open={i === 0} className="group">
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 transition-colors duration-200 hover:bg-page">
-                      <span className="font-semibold text-navy-950">{section.title}</span>
-                      <span className="flex shrink-0 items-center gap-3 text-sm text-gray-600">
-                        {section.lessons.length} lessons
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 transition-colors duration-200 hover:bg-subtle">
+                      <span className="font-semibold text-heading">{section.title}</span>
+                      <span className="flex shrink-0 items-center gap-3 text-sm text-muted">
+                        {section.lessons.length} {section.lessons.length === 1 ? "lesson" : "lessons"}
                         <span className="transition-transform duration-300 ease-out group-open:rotate-180">
                           ▾
                         </span>
@@ -165,10 +165,10 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
                       {section.lessons.map((lesson) => (
                         <li
                           key={lesson.title}
-                          className="flex items-center justify-between gap-4 px-5 py-3 text-sm text-gray-700"
+                          className="flex items-center justify-between gap-4 px-5 py-3 text-sm text-body"
                         >
                           <span className="flex flex-wrap items-center gap-2">
-                            <span className="text-gray-500" aria-hidden>
+                            <span className="text-muted" aria-hidden>
                               ▶
                             </span>
                             {lesson.title}
@@ -178,7 +178,7 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
                               </span>
                             )}
                           </span>
-                          <span className="shrink-0 text-gray-600">{formatMinutes(lesson.durationMin)}</span>
+                          <span className="shrink-0 text-muted">{formatMinutes(lesson.durationMin)}</span>
                         </li>
                       ))}
                     </ul>

@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
+/* `dark:` classes apply when <html class="dark"> (set by next-themes) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /*
-  Brand colors come from src/config/site.ts (set as CSS variables on <html>
-  in layout.tsx). This block exposes them to Tailwind, e.g.
-  bg-navy-950, text-navy-950, bg-ocean, text-cyan, bg-page, border-line, text-teal-text.
+  Colors come from src/config/site.ts — layout.tsx writes them as CSS variables
+  (light values on :root, dark values on .dark). This exposes them to Tailwind:
+    fixed:  bg-navy-950, bg-ocean, text-cyan, bg-blue ...
+    themed: bg-page, bg-card, border-line, text-heading, text-muted,
+            text-teal-text, bg-subtle
 */
 @theme inline {
   --color-navy-950: var(--navy-950);
@@ -14,12 +19,47 @@
   --color-page: var(--bg);
   --color-card: var(--card);
   --color-line: var(--border);
+  --color-heading: var(--heading);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
   --color-teal-text: var(--teal-text);
+  --color-subtle: var(--subtle);
 }
 
 body {
   background: var(--bg);
-  color: var(--navy-950);
+  color: var(--heading);
+}
+
+/* Native dropdown options follow the theme too */
+select option {
+  background: var(--card);
+  color: var(--heading);
+}
+
+/* Smooth ~0.3s colour change, only while switching theme (ThemeToggle adds the class) */
+@media (prefers-reduced-motion: no-preference) {
+  .theme-switching,
+  .theme-switching *,
+  .theme-switching *::before,
+  .theme-switching *::after {
+    transition:
+      color 0.3s ease-out,
+      background-color 0.3s ease-out,
+      border-color 0.3s ease-out,
+      box-shadow 0.3s ease-out,
+      fill 0.3s ease-out,
+      stroke 0.3s ease-out,
+      transform 0.3s ease-out,
+      opacity 0.3s ease-out !important;
+  }
+}
+
+/* Dark mode: soft cyan edge/glow so navy sections don't merge with the dark page */
+.dark .dark-glow {
+  box-shadow:
+    0 0 0 1px rgb(34 211 238 / 0.14),
+    0 0 60px -12px rgb(34 211 238 / 0.28);
 }
 
 /* Hide the default triangle on <details> summaries; we draw our own. */
@@ -93,6 +133,9 @@ summary::-webkit-details-marker {
   right: -6rem;
   background: var(--blue);
   animation: blob-drift-b 22s ease-in-out infinite alternate;
+}
+.dark .ambient-blob {
+  opacity: 0.12;
 }
 @keyframes blob-drift-a {
   to { transform: translate(6rem, 4rem) scale(1.1); }
@@ -171,6 +214,11 @@ summary::-webkit-details-marker {
 
 /* ---------- Accessibility: respect "reduce motion" ---------- */
 @media (prefers-reduced-motion: reduce) {
+  /* Fade-in blocks (motion.tsx) start hidden; show them immediately instead */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
   *,
   *::before,
   *::after {

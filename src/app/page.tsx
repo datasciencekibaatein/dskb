@@ -19,7 +19,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero — navy gradient + neural-network particles + aurora glow */}
-      <section className="bg-navy-gradient relative overflow-hidden text-white">
+      <section className="bg-navy-gradient dark-glow relative overflow-hidden text-white dark:border-b dark:border-cyan/15">
         <NeuralBackground />
 
         <div className="relative mx-auto max-w-6xl px-4 py-16 sm:py-24">
@@ -73,8 +73,8 @@ export default function HomePage() {
         <AmbientBlobs />
         <section className="relative mx-auto max-w-6xl px-4 py-14">
           <Reveal className="mb-6 flex items-end justify-between gap-4">
-            <h2 className="text-2xl font-bold text-navy-950 sm:text-3xl">Featured courses</h2>
-            <Link href="/courses" className="group text-sm font-semibold text-teal-text hover:text-navy-950">
+            <h2 className="text-2xl font-bold text-heading sm:text-3xl">Featured courses</h2>
+            <Link href="/courses" className="group text-sm font-semibold text-teal-text hover:text-heading">
               View all{" "}
               <span className="btn-arrow inline-block" aria-hidden>
                 →
@@ -94,7 +94,7 @@ export default function HomePage() {
       {/* Final CTA — same navy gradient as the hero */}
       <section className="mx-auto max-w-6xl px-4 pb-16">
         <Reveal>
-          <div className="bg-navy-gradient relative overflow-hidden rounded-2xl px-6 py-12 text-center text-white sm:px-12">
+          <div className="bg-navy-gradient dark-glow relative overflow-hidden rounded-2xl px-6 py-12 text-center text-white sm:px-12">
             <NeuralBackground particles={40} />
             <div className="relative">
               <h2 className="text-2xl font-bold sm:text-3xl">Start your data science journey today</h2>

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { MotionProvider } from "@/components/motion";
+import Providers from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: {
@@ -14,32 +13,32 @@ export const metadata: Metadata = {
   description: siteConfig.description,
 };
 
-// Pass brand colors from the config file into CSS variables.
-const brandVars = {
-  "--navy-950": siteConfig.colors.navy950,
-  "--navy-800": siteConfig.colors.navy800,
-  "--ocean": siteConfig.colors.ocean,
-  "--cyan": siteConfig.colors.cyan,
-  "--blue": siteConfig.colors.blue,
-  "--bg": siteConfig.colors.bg,
-  "--card": siteConfig.colors.card,
-  "--border": siteConfig.colors.border,
-  "--teal-text": siteConfig.colors.tealText,
-} as CSSProperties;
+// Turn the colors in src/config/site.ts into CSS variables:
+// light values on :root, dark values on .dark (set by next-themes).
+type ThemeTokens = typeof siteConfig.colors.light;
+const tokenVars = (t: ThemeTokens) =>
+  `--bg:${t.bg};--card:${t.card};--border:${t.border};--heading:${t.heading};` +
+  `--body:${t.body};--muted:${t.muted};--teal-text:${t.tealText};--subtle:${t.subtle};`;
+
+const c = siteConfig.colors;
+const themeCss =
+  `:root{--navy-950:${c.navy950};--navy-800:${c.navy800};--ocean:${c.ocean};` +
+  `--cyan:${c.cyan};--blue:${c.blue};${tokenVars(c.light)}}` +
+  `.dark{${tokenVars(c.dark)}}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      style={brandVars}
-      className="h-full antialiased"
-    >
+    // suppressHydrationWarning: next-themes adds the "dark" class before React loads.
+    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        <style>{themeCss}</style>
+      </head>
       <body className="min-h-full flex flex-col font-sans">
-        <MotionProvider>
+        <Providers>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-        </MotionProvider>
+        </Providers>
       </body>
     </html>
   );
