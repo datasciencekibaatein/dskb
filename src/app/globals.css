@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/*
+  Brand colors come from src/config/site.ts (set as CSS variables on <html>
+  in layout.tsx). This block exposes them to Tailwind as bg-brand, text-accent, etc.
+*/
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-accent: var(--accent);
+}
+
+body {
+  background: #fafafa;
+  color: #171717;
+}
+
+/* Hide the default triangle on <details> summaries; we draw our own. */
+summary::-webkit-details-marker {
+  display: none;
+}
