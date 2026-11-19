@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { allLanguages, courses, getFeaturedCourses } from "@/data/courses";
+import { courses, getFeaturedCourses, spokenLanguageCount } from "@/data/courses";
 import CourseCard from "@/components/CourseCard";
 import { CountUp, Reveal, Stagger, StaggerItem } from "@/components/motion";
+import NeuralBackground from "@/components/NeuralBackground";
+import AmbientBlobs from "@/components/AmbientBlobs";
 
 export default function HomePage() {
   const featured = getFeaturedCourses();
@@ -11,15 +13,14 @@ export default function HomePage() {
   const stats = [
     { label: "Courses", value: courses.length },
     { label: "Live cohorts", value: liveCount },
-    { label: "Languages", value: allLanguages.length },
+    { label: "Languages", value: spokenLanguageCount },
   ];
 
   return (
     <>
-      {/* Hero — navy gradient, faint dot pattern, drifting cyan glow */}
+      {/* Hero — navy gradient + neural-network particles + aurora glow */}
       <section className="bg-navy-gradient relative overflow-hidden text-white">
-        <div className="pattern-dots absolute inset-0" aria-hidden />
-        <div className="hero-glow" aria-hidden />
+        <NeuralBackground />
 
         <div className="relative mx-auto max-w-6xl px-4 py-16 sm:py-24">
           <Reveal>
@@ -34,7 +35,10 @@ export default function HomePage() {
 
           <Reveal delay={0.1} className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="/courses" className="btn-primary">
-              Browse Courses <span className="btn-arrow" aria-hidden>→</span>
+              Browse Courses{" "}
+              <span className="btn-arrow" aria-hidden>
+                →
+              </span>
             </Link>
             <a
               href={siteConfig.youtubeUrl}
@@ -42,7 +46,10 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-2 rounded-lg border border-white/30 px-6 py-3 font-semibold text-white transition-colors duration-300 ease-out hover:border-white/60 hover:bg-white/5"
             >
-              Watch on YouTube <span className="btn-arrow" aria-hidden>→</span>
+              Watch on YouTube{" "}
+              <span className="btn-arrow" aria-hidden>
+                →
+              </span>
             </a>
           </Reveal>
 
@@ -61,35 +68,44 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured courses */}
-      <section className="mx-auto max-w-6xl px-4 py-14">
-        <Reveal className="mb-6 flex items-end justify-between gap-4">
-          <h2 className="text-2xl font-bold text-navy-950 sm:text-3xl">Featured courses</h2>
-          <Link href="/courses" className="group text-sm font-semibold text-teal-text hover:text-navy-950">
-            View all <span className="btn-arrow inline-block" aria-hidden>→</span>
-          </Link>
-        </Reveal>
-        <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featured.map((course) => (
-            <StaggerItem key={course.slug}>
-              <CourseCard course={course} />
-            </StaggerItem>
-          ))}
-        </Stagger>
-      </section>
+      {/* Featured courses — faint drifting blobs behind */}
+      <div className="relative overflow-hidden">
+        <AmbientBlobs />
+        <section className="relative mx-auto max-w-6xl px-4 py-14">
+          <Reveal className="mb-6 flex items-end justify-between gap-4">
+            <h2 className="text-2xl font-bold text-navy-950 sm:text-3xl">Featured courses</h2>
+            <Link href="/courses" className="group text-sm font-semibold text-teal-text hover:text-navy-950">
+              View all{" "}
+              <span className="btn-arrow inline-block" aria-hidden>
+                →
+              </span>
+            </Link>
+          </Reveal>
+          <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {featured.map((course) => (
+              <StaggerItem key={course.slug}>
+                <CourseCard course={course} />
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </section>
+      </div>
 
       {/* Final CTA — same navy gradient as the hero */}
       <section className="mx-auto max-w-6xl px-4 pb-16">
         <Reveal>
           <div className="bg-navy-gradient relative overflow-hidden rounded-2xl px-6 py-12 text-center text-white sm:px-12">
-            <div className="pattern-dots absolute inset-0" aria-hidden />
+            <NeuralBackground particles={40} />
             <div className="relative">
               <h2 className="text-2xl font-bold sm:text-3xl">Start your data science journey today</h2>
               <p className="mx-auto mt-3 max-w-xl text-white/80">
                 Beginner-friendly courses, real projects, and explanations in the language you think in.
               </p>
               <Link href="/courses" className="btn-primary mt-6">
-                Explore all courses <span className="btn-arrow" aria-hidden>→</span>
+                Explore all courses{" "}
+                <span className="btn-arrow" aria-hidden>
+                  →
+                </span>
               </Link>
             </div>
           </div>

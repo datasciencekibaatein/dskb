@@ -39,11 +39,7 @@ summary::-webkit-details-marker {
   background: linear-gradient(135deg, var(--navy-950), var(--ocean));
 }
 
-/* Faint "data" patterns, layered on top of dark gradients */
-.pattern-dots {
-  background-image: radial-gradient(rgb(255 255 255 / 0.09) 1px, transparent 1px);
-  background-size: 22px 22px;
-}
+/* Faint grid pattern, layered on top of course thumbnails */
 .pattern-grid {
   background-image:
     linear-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1px),
@@ -51,22 +47,58 @@ summary::-webkit-details-marker {
   background-size: 24px 24px;
 }
 
-/* Soft cyan glow that slowly drifts in the hero's top-right corner */
-.hero-glow {
+/* Aurora glow inside <NeuralBackground> — mostly on the right, where the hero is empty */
+.aurora {
   position: absolute;
-  top: -12rem;
-  right: -10rem;
-  width: 34rem;
-  height: 34rem;
+  top: -25%;
+  right: -15%;
+  width: 65%;
+  height: 150%;
   border-radius: 9999px;
-  background: rgb(34 211 238 / 0.18);
-  filter: blur(90px);
-  pointer-events: none;
-  animation: glow-drift 14s ease-in-out infinite alternate;
+  background: radial-gradient(
+    closest-side,
+    rgb(34 211 238 / 0.2),
+    rgb(59 130 246 / 0.12) 55%,
+    transparent 100%
+  );
+  filter: blur(60px);
+  animation: aurora-drift 13s ease-in-out infinite alternate;
 }
-@keyframes glow-drift {
+@keyframes aurora-drift {
   from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(-3rem, 2.5rem) scale(1.08); }
+  to   { transform: translate(-8%, 10%) scale(1.12); }
+}
+/* NeuralBackground sets data-paused when off-screen / tab hidden */
+.neural-bg[data-paused="true"] .aurora {
+  animation-play-state: paused;
+}
+
+/* Barely-visible blobs behind light sections (<AmbientBlobs>) */
+.ambient-blob {
+  position: absolute;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.08;
+}
+.ambient-blob-cyan {
+  top: -6rem;
+  left: -8rem;
+  background: var(--cyan);
+  animation: blob-drift-a 18s ease-in-out infinite alternate;
+}
+.ambient-blob-blue {
+  bottom: -8rem;
+  right: -6rem;
+  background: var(--blue);
+  animation: blob-drift-b 22s ease-in-out infinite alternate;
+}
+@keyframes blob-drift-a {
+  to { transform: translate(6rem, 4rem) scale(1.1); }
+}
+@keyframes blob-drift-b {
+  to { transform: translate(-5rem, -5rem) scale(1.15); }
 }
 
 /* Gradient text (cyan → blue), used for "AI & ML" in the hero */

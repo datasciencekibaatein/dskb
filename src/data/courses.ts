@@ -1,422 +1,405 @@
-// Single source of truth for all courses on the site.
-// Edit/add courses here — every page reads from this file.
-// NOTE: This is dummy data for Step 1 (no backend yet).
+// =============================================================
+// DataScience ki Baatein — DUMMY course catalogue
+// Placeholder data for building the website. Prices, durations
+// and lesson lists are samples — replace with real data later.
+// Location in the project: src/data/courses.ts
+// =============================================================
 
-export type CourseCategory =
-  | "Python"
-  | "Data Analysis"
-  | "Machine Learning"
-  | "AI"
-  | "SQL"
-  | "Statistics"
-  | "Business Intelligence";
-
-export type CourseLanguage = "Hindi" | "English";
+export type Language = "Hindi" | "English" | "Hindi + English";
+export type Level = "Beginner" | "Intermediate" | "Advanced";
 export type CourseType = "recorded" | "live";
 export type CourseStatus = "published" | "coming-soon";
-export type CourseLevel = "Beginner" | "Intermediate" | "Advanced";
 
 export interface Lesson {
   title: string;
-  duration: string; // e.g. "12:30"
-  isFreePreview?: boolean;
+  durationMin: number;
+  isFreePreview?: boolean; // visible without buying
 }
 
-export interface CurriculumSection {
+export interface Section {
   title: string;
   lessons: Lesson[];
 }
 
-export interface LiveSchedule {
-  startDate: string; // ISO date, e.g. "2027-01-10"
-  days: string; // e.g. "Sat & Sun"
-  time: string; // e.g. "8:00 PM – 10:00 PM"
-  timezone: string; // e.g. "IST"
-  totalSessions: number;
-}
-
 export interface Course {
-  slug: string; // used in the URL: /courses/[slug]
+  id: string;
+  slug: string; // used in URL: /courses/<slug>
   title: string;
   subtitle: string;
-  category: CourseCategory;
-  language: CourseLanguage;
+  category: string; // "Data Science" | "Machine Learning" | "Deep Learning" | "GenAI" ...
+  language: Language;
+  level: Level;
   type: CourseType;
   status: CourseStatus;
-  level: CourseLevel;
-  price: number; // selling price in INR
-  originalPrice: number; // shown struck-through if higher than price
-  duration: string;
-  featured?: boolean; // shown on the home page
+  priceINR: number;
+  originalPriceINR?: number; // shown struck-through if discounted
+  thumbnail: string; // placeholder path in /public/thumbnails
+  instructor: string;
   whatYouWillLearn: string[];
   includes: string[];
-  curriculum: CurriculumSection[];
-  liveSchedule?: LiveSchedule; // only for type: "live"
+  curriculum: Section[];
+  liveSchedule?: { startDate: string; days: string; time: string; seats: number };
 }
+
+const INSTRUCTOR = "DataScience ki Baatein";
 
 export const courses: Course[] = [
   {
-    slug: "python-for-data-science",
-    title: "Python for Data Science — Complete Masterclass",
-    subtitle:
-      "Start your data science journey with Python. Variables, loops, functions, OOP and data analysis with hands-on projects from day one.",
-    category: "Python",
+    id: "c1",
+    slug: "python-for-data-science-hindi",
+    title: "Python for Data Science",
+    subtitle: "Zero se Python seekho — data science ke liye",
+    category: "Data Science",
     language: "Hindi",
+    level: "Beginner",
     type: "recorded",
     status: "published",
-    level: "Beginner",
-    price: 1499,
-    originalPrice: 4999,
-    duration: "28 hours",
-    featured: true,
+    priceINR: 499,
+    originalPriceINR: 1499,
+    thumbnail: "/thumbnails/python.png",
+    instructor: INSTRUCTOR,
     whatYouWillLearn: [
-      "Python basics to advanced concepts",
-      "Write clean functions and classes (OOP)",
-      "Work with files, errors and modules",
-      "Analyse data with real mini-projects",
+      "Python basics: variables, data types, loops, functions",
+      "Lists, tuples, dictionaries and sets",
+      "File handling and error handling",
+      "Writing clean, reusable code for data work",
     ],
-    includes: [
-      "28 hours of on-demand video",
-      "Downloadable notebooks",
-      "Certificate of completion",
-      "Lifetime access",
-    ],
+    includes: ["Recorded HD lessons", "Lecture notes (PDF)", "Code files on GitHub", "Certificate of completion"],
     curriculum: [
       {
         title: "Getting Started",
         lessons: [
-          { title: "Welcome & course roadmap", duration: "05:12", isFreePreview: true },
-          { title: "Installing Python & Jupyter", duration: "11:40", isFreePreview: true },
-          { title: "Your first Python program", duration: "09:05" },
+          { title: "Why Python for Data Science?", durationMin: 15, isFreePreview: true },
+          { title: "Installing Python, Jupyter and VS Code", durationMin: 20, isFreePreview: true },
         ],
       },
       {
-        title: "Core Python",
+        title: "Python Fundamentals",
         lessons: [
-          { title: "Variables & data types", duration: "18:22" },
-          { title: "Loops and conditions", duration: "21:10" },
-          { title: "Functions", duration: "24:45" },
+          { title: "Variables and Data Types", durationMin: 30 },
+          { title: "Conditions and Loops", durationMin: 35 },
+          { title: "Functions", durationMin: 40 },
         ],
       },
       {
-        title: "Object-Oriented Python",
+        title: "Data Structures",
         lessons: [
-          { title: "Classes & objects", duration: "22:30" },
-          { title: "Inheritance", duration: "17:15" },
+          { title: "Lists and Tuples", durationMin: 35 },
+          { title: "Dictionaries and Sets", durationMin: 35 },
         ],
       },
     ],
   },
   {
-    slug: "pandas-numpy-bootcamp",
-    title: "Pandas & NumPy — Data Manipulation Bootcamp",
-    subtitle:
-      "Work with real-world datasets. Master data cleaning, wrangling and analysis through practical exercises.",
-    category: "Data Analysis",
-    language: "English",
+    id: "c2",
+    slug: "numpy-pandas-masterclass-hindi",
+    title: "NumPy & Pandas Masterclass",
+    subtitle: "Data ko handle karna seekho — arrays se EDA tak",
+    category: "Data Science",
+    language: "Hindi",
+    level: "Beginner",
     type: "recorded",
     status: "published",
-    level: "Intermediate",
-    price: 1299,
-    originalPrice: 3999,
-    duration: "18 hours",
+    priceINR: 699,
+    originalPriceINR: 1999,
+    thumbnail: "/thumbnails/numpy-pandas.png",
+    instructor: INSTRUCTOR,
     whatYouWillLearn: [
-      "Load, clean and reshape messy data",
-      "NumPy arrays and vectorization",
-      "GroupBy, merge and pivot tables",
-      "Exploratory data analysis workflow",
+      "NumPy arrays, indexing, broadcasting",
+      "Pandas Series and DataFrames",
+      "Cleaning, filtering, grouping and merging data",
+      "End-to-end EDA project on an e-commerce dataset",
     ],
-    includes: [
-      "18 hours of on-demand video",
-      "Real datasets to practise on",
-      "Jupyter notebooks",
-      "Lifetime access",
-    ],
+    includes: ["Recorded HD lessons", "Datasets + notebooks", "EDA project", "Certificate of completion"],
     curriculum: [
       {
-        title: "NumPy Foundations",
+        title: "NumPy",
         lessons: [
-          { title: "Why NumPy?", duration: "07:50", isFreePreview: true },
-          { title: "Arrays, shapes & indexing", duration: "19:30" },
-          { title: "Vectorized operations", duration: "16:05" },
+          { title: "NumPy Arrays Introduction", durationMin: 30, isFreePreview: true },
+          { title: "Indexing and Slicing", durationMin: 30 },
+          { title: "Broadcasting and Vectorization", durationMin: 35 },
         ],
       },
       {
-        title: "Pandas in Practice",
+        title: "Pandas",
         lessons: [
-          { title: "Series & DataFrames", duration: "14:20", isFreePreview: true },
-          { title: "Cleaning missing values", duration: "20:40" },
-          { title: "GroupBy & aggregation", duration: "23:15" },
-          { title: "Merging datasets", duration: "18:00" },
+          { title: "Series and DataFrames", durationMin: 35, isFreePreview: true },
+          { title: "Handling Missing Data", durationMin: 40 },
+          { title: "GroupBy and Aggregation", durationMin: 40 },
+          { title: "Merge, Join and Concat", durationMin: 35 },
         ],
+      },
+      {
+        title: "Project",
+        lessons: [{ title: "EDA on an E-commerce Dataset", durationMin: 60 }],
       },
     ],
   },
   {
-    slug: "machine-learning-a-to-z",
-    title: "Machine Learning A–Z — Live Cohort",
-    subtitle:
-      "Supervised and unsupervised learning, taught live. Build real ML pipelines with Scikit-learn and ask questions in every class.",
+    id: "c3",
+    slug: "data-visualization-hindi",
+    title: "Data Visualization with Matplotlib & Seaborn",
+    subtitle: "Charts, dashboards aur insights — data ki kahani batao",
+    category: "Data Science",
+    language: "Hindi",
+    level: "Beginner",
+    type: "recorded",
+    status: "published",
+    priceINR: 599,
+    originalPriceINR: 1499,
+    thumbnail: "/thumbnails/visualization.png",
+    instructor: INSTRUCTOR,
+    whatYouWillLearn: [
+      "Line, bar, scatter, histogram and box plots",
+      "Seaborn statistical charts",
+      "Choosing the right chart for the question",
+      "Build a retail sales dashboard with insights",
+    ],
+    includes: ["Recorded HD lessons", "Datasets + notebooks", "Dashboard project", "Certificate of completion"],
+    curriculum: [
+      {
+        title: "Matplotlib",
+        lessons: [
+          { title: "Matplotlib Basics", durationMin: 30, isFreePreview: true },
+          { title: "Customizing Charts", durationMin: 35 },
+        ],
+      },
+      {
+        title: "Seaborn",
+        lessons: [
+          { title: "Seaborn Introduction", durationMin: 30 },
+          { title: "Distribution and Relationship Plots", durationMin: 40 },
+        ],
+      },
+      {
+        title: "Project",
+        lessons: [{ title: "Retail Sales Dashboard", durationMin: 60 }],
+      },
+    ],
+  },
+  {
+    id: "c4",
+    slug: "feature-engineering-hindi",
+    title: "Feature Engineering & Preprocessing",
+    subtitle: "Raw data ko model-ready banao",
     category: "Machine Learning",
     language: "Hindi",
-    type: "live",
-    status: "published",
     level: "Intermediate",
-    price: 1999,
-    originalPrice: 5999,
-    duration: "16 live sessions",
-    featured: true,
-    whatYouWillLearn: [
-      "Linear & logistic regression",
-      "Decision trees and random forests",
-      "Clustering & PCA",
-      "Build and evaluate an end-to-end ML project",
-    ],
-    includes: [
-      "16 live interactive sessions",
-      "Recordings of every class",
-      "Weekly assignments with feedback",
-      "Certificate of completion",
-    ],
-    liveSchedule: {
-      startDate: "2027-01-09",
-      days: "Sat & Sun",
-      time: "8:00 PM – 10:00 PM",
-      timezone: "IST",
-      totalSessions: 16,
-    },
-    curriculum: [
-      {
-        title: "Week 1–2: ML Foundations",
-        lessons: [
-          { title: "What is Machine Learning?", duration: "Live", isFreePreview: true },
-          { title: "Linear regression", duration: "Live" },
-          { title: "Model evaluation basics", duration: "Live" },
-        ],
-      },
-      {
-        title: "Week 3–5: Classification",
-        lessons: [
-          { title: "Logistic regression", duration: "Live" },
-          { title: "Decision trees", duration: "Live" },
-          { title: "Random forests", duration: "Live" },
-        ],
-      },
-      {
-        title: "Week 6–8: Unsupervised & Project",
-        lessons: [
-          { title: "K-Means clustering", duration: "Live" },
-          { title: "PCA", duration: "Live" },
-          { title: "Capstone project", duration: "Live" },
-        ],
-      },
-    ],
-  },
-  {
-    slug: "power-bi-dashboards",
-    title: "Power BI — Business Intelligence Dashboards",
-    subtitle:
-      "Build interactive dashboards with Power BI. DAX, Power Query and data modelling for real business insights.",
-    category: "Business Intelligence",
-    language: "Hindi",
     type: "recorded",
     status: "coming-soon",
-    level: "Beginner",
-    price: 999,
-    originalPrice: 2999,
-    duration: "15 hours",
+    priceINR: 799,
+    originalPriceINR: 1999,
+    thumbnail: "/thumbnails/feature-engineering.png",
+    instructor: INSTRUCTOR,
     whatYouWillLearn: [
-      "Connect and transform data with Power Query",
-      "Write DAX measures",
-      "Design clean, interactive dashboards",
-      "Publish and share reports",
+      "Missing value imputation techniques",
+      "Encoding categorical variables",
+      "Scaling, transformation and outliers",
+      "Feature selection and train-test split",
     ],
-    includes: [
-      "15 hours of on-demand video",
-      "Practice datasets",
-      "Certificate of completion",
-      "Lifetime access",
-    ],
+    includes: ["Recorded HD lessons", "Notebooks", "Certificate of completion"],
     curriculum: [
       {
-        title: "Power BI Basics",
+        title: "Data Cleaning",
         lessons: [
-          { title: "Tour of Power BI Desktop", duration: "10:00", isFreePreview: true },
-          { title: "Loading your first dataset", duration: "12:30" },
+          { title: "Missing Value Imputation", durationMin: 40, isFreePreview: true },
+          { title: "Handling Outliers", durationMin: 35 },
         ],
       },
       {
-        title: "DAX & Modelling",
+        title: "Transformations",
         lessons: [
-          { title: "Relationships & star schema", duration: "18:45" },
-          { title: "DAX measures 101", duration: "22:10" },
+          { title: "Encoding Categorical Data", durationMin: 40 },
+          { title: "Feature Scaling", durationMin: 30 },
+          { title: "Date-Time and Text Features", durationMin: 40 },
+        ],
+      },
+      {
+        title: "Selection",
+        lessons: [
+          { title: "Feature Selection", durationMin: 45 },
+          { title: "Train-Test Split", durationMin: 25 },
         ],
       },
     ],
   },
   {
-    slug: "sql-for-data-science",
-    title: "SQL for Data Science — Query Master",
-    subtitle:
-      "Joins, subqueries, window functions and database design. The complete SQL toolkit every data analyst needs.",
-    category: "SQL",
-    language: "English",
-    type: "recorded",
-    status: "published",
-    level: "Beginner",
-    price: 899,
-    originalPrice: 2499,
-    duration: "12 hours",
-    featured: true,
-    whatYouWillLearn: [
-      "Write queries from basic to advanced",
-      "Master joins and subqueries",
-      "Use window functions confidently",
-      "Crack common SQL interview questions",
-    ],
-    includes: [
-      "12 hours of on-demand video",
-      "SQL practice sheets",
-      "Interview question bank",
-      "Lifetime access",
-    ],
-    curriculum: [
-      {
-        title: "SQL Basics",
-        lessons: [
-          { title: "Databases & tables explained", duration: "08:15", isFreePreview: true },
-          { title: "SELECT, WHERE, ORDER BY", duration: "16:40" },
-        ],
-      },
-      {
-        title: "Intermediate SQL",
-        lessons: [
-          { title: "JOINs in depth", duration: "24:00" },
-          { title: "GROUP BY & HAVING", duration: "15:30" },
-        ],
-      },
-      {
-        title: "Advanced SQL",
-        lessons: [
-          { title: "Window functions", duration: "26:20" },
-          { title: "Interview problems walkthrough", duration: "30:00" },
-        ],
-      },
-    ],
-  },
-  {
-    slug: "statistics-for-data-science",
-    title: "Statistics for Data Science — No Fear",
-    subtitle:
-      "Descriptive and inferential statistics, probability and distributions made simple — explained in Hindi.",
-    category: "Statistics",
+    id: "c5",
+    slug: "machine-learning-complete-hindi",
+    title: "Complete Machine Learning",
+    subtitle: "Linear Regression se Boosting tak — theory + code + projects",
+    category: "Machine Learning",
     language: "Hindi",
-    type: "recorded",
-    status: "published",
-    level: "Beginner",
-    price: 799,
-    originalPrice: 1999,
-    duration: "16 hours",
-    whatYouWillLearn: [
-      "Mean, median, variance — intuitively",
-      "Probability and common distributions",
-      "Hypothesis testing step by step",
-      "Apply statistics in Python",
-    ],
-    includes: [
-      "16 hours of on-demand video",
-      "Formula cheat sheet",
-      "Certificate of completion",
-      "Lifetime access",
-    ],
-    curriculum: [
-      {
-        title: "Descriptive Statistics",
-        lessons: [
-          { title: "Why statistics matters", duration: "06:30", isFreePreview: true },
-          { title: "Measures of centre & spread", duration: "19:10" },
-        ],
-      },
-      {
-        title: "Probability & Inference",
-        lessons: [
-          { title: "Probability basics", duration: "17:45" },
-          { title: "Normal distribution", duration: "20:00" },
-          { title: "Hypothesis testing", duration: "25:30" },
-        ],
-      },
-    ],
-  },
-  {
-    slug: "ai-fundamentals",
-    title: "AI Fundamentals — Practical Artificial Intelligence (Live)",
-    subtitle:
-      "From neural networks to large language models. Build real AI applications in a live, cohort-based format.",
-    category: "AI",
-    language: "English",
-    type: "live",
-    status: "coming-soon",
     level: "Intermediate",
-    price: 1699,
-    originalPrice: 4499,
-    duration: "12 live sessions",
-    featured: true,
+    type: "recorded",
+    status: "coming-soon",
+    priceINR: 1999,
+    originalPriceINR: 4999,
+    thumbnail: "/thumbnails/machine-learning.png",
+    instructor: INSTRUCTOR,
     whatYouWillLearn: [
-      "How neural networks learn",
-      "How LLMs like ChatGPT work",
-      "Prompting and building with AI APIs",
-      "Ship a small AI app",
+      "Regression and classification foundations",
+      "KNN, SVM, Decision Trees, Random Forest, Boosting",
+      "Model evaluation, overfitting and regularization",
+      "Clustering and dimensionality reduction",
+      "Two supervised projects + one unsupervised project",
     ],
-    includes: [
-      "12 live interactive sessions",
-      "Recordings of every class",
-      "Project templates",
-      "Certificate of completion",
-    ],
-    liveSchedule: {
-      startDate: "2027-02-06",
-      days: "Saturdays",
-      time: "7:00 PM – 9:00 PM",
-      timezone: "IST",
-      totalSessions: 12,
-    },
+    includes: ["Recorded HD lessons", "Notebooks", "3 projects", "Certificate of completion"],
     curriculum: [
       {
         title: "Foundations",
         lessons: [
-          { title: "What is AI, really?", duration: "Live", isFreePreview: true },
-          { title: "Neural networks intuition", duration: "Live" },
+          { title: "Linear Regression — Part 1", durationMin: 60, isFreePreview: true },
+          { title: "Linear Regression — Part 2", durationMin: 60 },
+          { title: "Overfitting vs Underfitting", durationMin: 40 },
+          { title: "Logistic Regression", durationMin: 60 },
         ],
       },
       {
-        title: "Large Language Models",
+        title: "Algorithms",
         lessons: [
-          { title: "How LLMs work", duration: "Live" },
-          { title: "Prompt engineering", duration: "Live" },
-          { title: "Build an AI app", duration: "Live" },
+          { title: "K-Nearest Neighbors", durationMin: 50 },
+          { title: "SVM — Part 1", durationMin: 50 },
+          { title: "Decision Trees — Part 1", durationMin: 50 },
+          { title: "Random Forest", durationMin: 50 },
         ],
+      },
+      {
+        title: "Projects",
+        lessons: [
+          { title: "Regression Project", durationMin: 75 },
+          { title: "Classification Project", durationMin: 75 },
+        ],
+      },
+    ],
+  },
+  {
+    id: "c6",
+    slug: "deep-learning-ann-to-gan",
+    title: "Deep Learning: From ANN to GANs",
+    subtitle: "Build neural networks from scratch with NumPy and Keras",
+    category: "Deep Learning",
+    language: "English",
+    level: "Advanced",
+    type: "recorded",
+    status: "coming-soon",
+    priceINR: 2499,
+    originalPriceINR: 5999,
+    thumbnail: "/thumbnails/deep-learning.png",
+    instructor: INSTRUCTOR,
+    whatYouWillLearn: [
+      "Perceptron to multi-layer ANNs, from scratch",
+      "CNNs for image classification (CIFAR-10)",
+      "RNNs, LSTMs and Attention",
+      "Autoencoders, VAEs and GANs",
+    ],
+    includes: ["Recorded HD lessons", "NumPy + Keras notebooks", "Projects", "Certificate of completion"],
+    curriculum: [
+      {
+        title: "Foundations & ANN",
+        lessons: [
+          { title: "What is Deep Learning?", durationMin: 30, isFreePreview: true },
+          { title: "The Perceptron", durationMin: 40 },
+          { title: "Backpropagation from Scratch", durationMin: 60 },
+        ],
+      },
+      {
+        title: "CNN",
+        lessons: [
+          { title: "Convolution Explained", durationMin: 45 },
+          { title: "CIFAR-10 Project", durationMin: 60 },
+        ],
+      },
+      {
+        title: "RNN & Sequences",
+        lessons: [
+          { title: "RNN and LSTM", durationMin: 50 },
+          { title: "Attention Mechanism", durationMin: 50 },
+        ],
+      },
+      {
+        title: "Generative Models",
+        lessons: [
+          { title: "Autoencoders and VAE", durationMin: 50 },
+          { title: "GANs", durationMin: 60 },
+        ],
+      },
+    ],
+  },
+  {
+    id: "c7",
+    slug: "data-science-live-bootcamp",
+    title: "Data Science Live Bootcamp",
+    subtitle: "8-week live cohort with doubt sessions and projects",
+    category: "Data Science",
+    language: "Hindi + English",
+    level: "Beginner",
+    type: "live",
+    status: "published",
+    priceINR: 4999,
+    originalPriceINR: 9999,
+    thumbnail: "/thumbnails/bootcamp.png",
+    instructor: INSTRUCTOR,
+    whatYouWillLearn: [
+      "Python, NumPy, Pandas and visualization — live",
+      "Weekly assignments with feedback",
+      "Live doubt-clearing sessions",
+      "Capstone project for your portfolio",
+    ],
+    includes: ["Live classes", "Recordings of every session", "Assignments", "Certificate of completion"],
+    liveSchedule: { startDate: "2027-02-01", days: "Sat & Sun", time: "7:00 PM IST", seats: 50 },
+    curriculum: [
+      {
+        title: "Weeks 1–2: Python",
+        lessons: [{ title: "Live sessions (4)", durationMin: 480 }],
+      },
+      {
+        title: "Weeks 3–5: Data Handling & Visualization",
+        lessons: [{ title: "Live sessions (6)", durationMin: 720 }],
+      },
+      {
+        title: "Weeks 6–8: Capstone",
+        lessons: [{ title: "Live sessions + project reviews (6)", durationMin: 720 }],
       },
     ],
   },
 ];
 
-// ---------- Helpers ----------
+// Helpers the website will use
+export const getCourseBySlug = (slug: string) => courses.find((c) => c.slug === slug);
+export const categories = Array.from(new Set(courses.map((c) => c.category)));
+export const languages: Language[] = ["Hindi", "English", "Hindi + English"];
 
-export function getCourseBySlug(slug: string): Course | undefined {
-  return courses.find((c) => c.slug === slug);
-}
+// ---------- Display helpers (used by the pages) ----------
 
-export function getFeaturedCourses(): Course[] {
-  return courses.filter((c) => c.featured);
+// Home page "Featured courses": published courses first, then coming-soon; max 4.
+export function getFeaturedCourses(limit = 4): Course[] {
+  const published = courses.filter((c) => c.status === "published");
+  const comingSoon = courses.filter((c) => c.status !== "published");
+  return [...published, ...comingSoon].slice(0, limit);
 }
 
 export function getLessonCount(course: Course): number {
   return course.curriculum.reduce((sum, s) => sum + s.lessons.length, 0);
 }
 
+export function getTotalMinutes(course: Course): number {
+  return course.curriculum.reduce((sum, s) => sum + s.lessons.reduce((m, l) => m + l.durationMin, 0), 0);
+}
+
+// 45 → "45 min", 90 → "1 hr 30 min", 480 → "8 hrs"
+export function formatMinutes(min: number): string {
+  if (min < 60) return `${min} min`;
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+  const hours = `${h} ${h === 1 ? "hr" : "hrs"}`;
+  return m ? `${hours} ${m} min` : hours;
+}
+
 export function getDiscountPercent(course: Course): number {
-  if (course.originalPrice <= course.price) return 0;
-  return Math.round((1 - course.price / course.originalPrice) * 100);
+  const original = course.originalPriceINR;
+  if (!original || original <= course.priceINR) return 0;
+  return Math.round((1 - course.priceINR / original) * 100);
 }
 
 export function formatINR(amount: number): string {
@@ -427,7 +410,8 @@ export function formatINR(amount: number): string {
   }).format(amount);
 }
 
-// Unique values, used to build the filter dropdowns.
-export const allCategories = Array.from(new Set(courses.map((c) => c.category)));
-export const allLanguages = Array.from(new Set(courses.map((c) => c.language)));
-export const allTypes: CourseType[] = ["recorded", "live"];
+// Values for the Type filter on /courses (categories + languages are above).
+export const courseTypes: CourseType[] = ["recorded", "live"];
+
+// Distinct spoken languages ("Hindi + English" counts as both) — for the hero stat.
+export const spokenLanguageCount = new Set(courses.flatMap((c) => c.language.split(" + "))).size;

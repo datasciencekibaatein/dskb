@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { courses, getCourseBySlug, getLessonCount } from "@/data/courses";
+import { courses, formatMinutes, getCourseBySlug, getLessonCount, getTotalMinutes } from "@/data/courses";
 import Thumbnail from "@/components/Thumbnail";
 import Badge from "@/components/Badge";
 import Price from "@/components/Price";
@@ -52,7 +52,8 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
           <h1 className="mt-4 max-w-3xl text-2xl font-bold leading-tight sm:text-4xl">{course.title}</h1>
           <p className="mt-3 max-w-3xl text-white/80">{course.subtitle}</p>
           <p className="mt-4 text-sm text-white/75">
-            {course.level} · {course.duration} · {lessonCount} lessons
+            {course.level} · {formatMinutes(getTotalMinutes(course))} · {lessonCount} lessons · by{" "}
+            {course.instructor}
           </p>
         </Reveal>
       </section>
@@ -62,7 +63,7 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
         <Reveal className="lg:order-2">
           <aside className="lg:sticky lg:top-24">
             <div className="overflow-hidden rounded-xl border border-line bg-card shadow-sm">
-              <Thumbnail title={course.title} />
+              <Thumbnail label={course.category} />
               <div className="space-y-4 p-5">
                 <Price course={course} size="lg" />
                 <button type="button" disabled title="Payments coming soon" className="btn-primary w-full">
@@ -130,13 +131,11 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
                   </div>
                   <div>
                     <dt className="text-gray-600">Time</dt>
-                    <dd className="font-semibold text-navy-950">
-                      {course.liveSchedule.time} {course.liveSchedule.timezone}
-                    </dd>
+                    <dd className="font-semibold text-navy-950">{course.liveSchedule.time}</dd>
                   </div>
                   <div>
-                    <dt className="text-gray-600">Sessions</dt>
-                    <dd className="font-semibold text-navy-950">{course.liveSchedule.totalSessions}</dd>
+                    <dt className="text-gray-600">Seats</dt>
+                    <dd className="font-semibold text-navy-950">{course.liveSchedule.seats}</dd>
                   </div>
                 </dl>
               </section>
@@ -179,7 +178,7 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
                               </span>
                             )}
                           </span>
-                          <span className="shrink-0 text-gray-600">{lesson.duration}</span>
+                          <span className="shrink-0 text-gray-600">{formatMinutes(lesson.durationMin)}</span>
                         </li>
                       ))}
                     </ul>

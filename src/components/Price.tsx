@@ -5,11 +5,11 @@ export default function Price({ course, size = "md" }: { course: Course; size?: 
   return (
     <div className="flex flex-wrap items-baseline gap-2">
       <span className={`font-bold text-navy-950 ${size === "lg" ? "text-3xl" : "text-xl"}`}>
-        {formatINR(course.price)}
+        {formatINR(course.priceINR)}
       </span>
-      {discount > 0 && (
+      {discount > 0 && course.originalPriceINR && (
         <>
-          <span className="text-sm text-gray-500 line-through">{formatINR(course.originalPrice)}</span>
+          <span className="text-sm text-gray-500 line-through">{formatINR(course.originalPriceINR)}</span>
           <span className="text-sm font-semibold text-teal-text">{discount}% off</span>
         </>
       )}

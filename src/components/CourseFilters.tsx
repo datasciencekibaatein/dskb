@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { allCategories, allLanguages, allTypes, courses } from "@/data/courses";
+import { categories, courseTypes, courses, languages } from "@/data/courses";
 import CourseCard from "./CourseCard";
 
 const ALL = "all";
@@ -62,19 +62,19 @@ export default function CourseFilters() {
           label="Category"
           value={category}
           onChange={setCategory}
-          options={allCategories.map((c) => ({ value: c, label: c }))}
+          options={categories.map((c) => ({ value: c, label: c }))}
         />
         <Select
           label="Language"
           value={language}
           onChange={setLanguage}
-          options={allLanguages.map((l) => ({ value: l, label: l }))}
+          options={languages.map((l) => ({ value: l, label: l }))}
         />
         <Select
           label="Type"
           value={type}
           onChange={setType}
-          options={allTypes.map((t) => ({ value: t, label: t === "live" ? "Live" : "Recorded" }))}
+          options={courseTypes.map((t) => ({ value: t, label: t === "live" ? "Live" : "Recorded" }))}
         />
         <button
           type="button"
