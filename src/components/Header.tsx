@@ -3,41 +3,57 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import Logo from "./Logo";
 
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // After the user scrolls a little, the header turns translucent with blur.
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 8));
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur">
+    <header
+      className={`sticky top-0 z-40 border-b transition-[background-color,box-shadow,border-color] duration-300 ease-out ${
+        scrolled || open
+          ? "border-line/80 bg-white/75 shadow-[0_4px_20px_-12px_rgba(10,25,49,0.25)] backdrop-blur-md"
+          : "border-line bg-white"
+      }`}
+    >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Logo />
 
         {/* Desktop nav */}
-        <nav className="hidden gap-6 md:flex">
-          {siteConfig.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`text-sm font-medium transition-colors hover:text-brand ${
-                isActive(item.href) ? "text-brand" : "text-gray-600"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <nav className="hidden gap-7 md:flex">
+          {siteConfig.nav.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`nav-link text-sm font-medium transition-colors duration-200 hover:text-navy-950 ${
+                  active ? "text-navy-950" : "text-gray-600"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Mobile menu button */}
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
-          className="rounded-md p-2 text-gray-700 md:hidden"
+          className="rounded-md p-2 text-navy-950 md:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
@@ -48,22 +64,34 @@ export default function Header() {
       </div>
 
       {/* Mobile nav */}
-      {open && (
-        <nav className="border-t border-gray-200 bg-white px-4 py-2 md:hidden">
-          {siteConfig.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className={`block py-3 text-base font-medium ${
-                isActive(item.href) ? "text-brand" : "text-gray-700"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="border-t border-line px-4 py-2 md:hidden"
+          >
+            {siteConfig.nav.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={active ? "page" : undefined}
+                  className={`block border-l-2 py-3 pl-3 text-base font-medium ${
+                    active ? "border-cyan text-navy-950" : "border-transparent text-gray-600"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

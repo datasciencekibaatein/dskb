@@ -5,11 +5,11 @@ import { siteConfig } from "@/config/site";
 export default function Logo() {
   const { logo } = siteConfig;
   return (
-    <Link href="/" className="flex items-center gap-2 font-bold text-gray-900">
+    <Link href="/" className="flex items-center gap-2 font-bold text-navy-950">
       {logo.imageSrc ? (
         <Image src={logo.imageSrc} alt={siteConfig.name} width={36} height={36} className="rounded-full" />
       ) : (
-        <span className="grid h-9 w-9 place-items-center rounded-full bg-brand text-xs font-extrabold text-white">
+        <span className="grid h-9 w-9 place-items-center rounded-full bg-navy-950 text-xs font-extrabold text-cyan">
           {logo.shortText}
         </span>
       )}

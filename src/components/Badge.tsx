@@ -1,8 +1,9 @@
 const styles = {
-  comingSoon: "bg-accent text-gray-900",
-  live: "bg-red-600 text-white",
-  recorded: "bg-gray-100 text-gray-700",
-  neutral: "bg-brand/10 text-brand",
+  comingSoon: "bg-white text-navy-950 ring-1 ring-line", // readable on dark & light
+  live: "bg-cyan text-navy-950",
+  recorded: "bg-slate-100 text-slate-700",
+  neutral: "bg-navy-950/[0.06] text-navy-800",
+  onDark: "bg-white/10 text-white ring-1 ring-white/15", // for badges on navy backgrounds
 };
 
 export default function Badge({

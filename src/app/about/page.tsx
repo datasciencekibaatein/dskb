@@ -13,7 +13,7 @@ export default function AboutPage() {
       </p>
       <p>
         Watch free lessons on{" "}
-        <a href={siteConfig.youtubeUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand hover:underline">
+        <a href={siteConfig.youtubeUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-teal-text underline-offset-2 hover:underline">
           YouTube
         </a>{" "}
         or join one of our recorded or live courses.

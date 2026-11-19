@@ -16,12 +16,20 @@ export const siteConfig = {
     imageSrc: null as string | null,
   },
 
-  // Brand colors (any CSS color). Used via Tailwind classes:
-  //   bg-brand, text-brand, border-brand, bg-brand-dark, bg-accent, text-accent ...
+  // Brand colors — "Deep Navy & Cyan". Each becomes a CSS variable and a
+  // Tailwind class, e.g. navy950 → bg-navy-950 / text-navy-950,
+  // tealText → text-teal-text, border → border-line, bg → bg-page.
+  // Gradients in globals.css read these same variables.
   colors: {
-    brand: "#5b21b6", // primary (violet)
-    brandDark: "#3b0f80", // hover / dark sections
-    accent: "#f59e0b", // highlights (amber)
+    navy950: "#0A1931", // primary dark, headings
+    navy800: "#12305A",
+    ocean: "#0E4A6E",
+    cyan: "#22D3EE", // accent — use on dark backgrounds or behind navy text
+    blue: "#3B82F6", // gradient partner
+    bg: "#F5F8FA", // page background
+    card: "#FFFFFF",
+    border: "#DDE5EB",
+    tealText: "#0E7490", // discount %, small accents on light backgrounds
   },
 
   copyrightYear: 2026, // shown in the footer
