@@ -6,6 +6,7 @@ import Thumbnail from "@/components/Thumbnail";
 import Badge from "@/components/Badge";
 import Price from "@/components/Price";
 import { Reveal } from "@/components/motion";
+import { getPlaylistsForCourse } from "@/data/youtube";
 
 // Pre-build one page per course at build time.
 export function generateStaticParams() {
@@ -29,6 +30,7 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
 
   const comingSoon = course.status === "coming-soon";
   const lessonCount = getLessonCount(course);
+  const freePlaylists = getPlaylistsForCourse(course.slug);
 
   return (
     <>
@@ -75,6 +77,26 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
                 <p className="text-center text-xs text-muted">
                   {comingSoon ? "This course is coming soon." : "Enrolment opens soon."}
                 </p>
+                {freePlaylists.length > 0 && (
+                  <div className="rounded-lg border border-line bg-subtle p-3 text-sm">
+                    <p className="text-body">Not sure yet?</p>
+                    <ul className="mt-1 space-y-1">
+                      {freePlaylists.map((p) => (
+                        <li key={p.slug}>
+                          <Link
+                            href={`/free-learning/${p.slug}`}
+                            className="group font-semibold text-teal-text hover:text-heading"
+                          >
+                            Watch the free {freePlaylists.length > 1 ? `${p.title} ` : ""}playlist on YouTube{" "}
+                            <span className="btn-arrow inline-block" aria-hidden>
+                              →
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <div>
                   <h3 className="mb-2 text-sm font-semibold text-heading">This course includes</h3>
                   <ul className="space-y-1.5 text-sm text-body">

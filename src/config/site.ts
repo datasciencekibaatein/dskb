@@ -59,6 +59,7 @@ export const siteConfig = {
   nav: [
     { label: "Home", href: "/" },
     { label: "Courses", href: "/courses" },
+    { label: "Free Learning", href: "/free-learning" },
     { label: "About", href: "/about" },
   ],
 

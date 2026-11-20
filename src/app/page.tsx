@@ -5,6 +5,8 @@ import CourseCard from "@/components/CourseCard";
 import { CountUp, Reveal, Stagger, StaggerItem } from "@/components/motion";
 import NeuralBackground from "@/components/NeuralBackground";
 import AmbientBlobs from "@/components/AmbientBlobs";
+import YouTubeVideo from "@/components/YouTubeVideo";
+import { latestVideos, videoDuration, videoTitle } from "@/data/youtube";
 
 export default function HomePage() {
   const featured = getFeaturedCourses();
@@ -90,6 +92,42 @@ export default function HomePage() {
           </Stagger>
         </section>
       </div>
+
+      {/* Start learning free — latest YouTube videos (lite embeds) */}
+      <section className="mx-auto max-w-6xl px-4 pb-14">
+        <Reveal className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wider text-teal-text">Free on YouTube</p>
+            <h2 className="mt-1 text-2xl font-bold text-heading sm:text-3xl">Start learning free</h2>
+            <p className="mt-1 text-body">Latest videos — Hindi and English, no sign-up needed.</p>
+          </div>
+          <Link
+            href="/free-learning"
+            className="group text-sm font-semibold text-teal-text hover:text-heading"
+          >
+            Explore free playlists{" "}
+            <span className="btn-arrow inline-block" aria-hidden>
+              →
+            </span>
+          </Link>
+        </Reveal>
+        <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {latestVideos.map((v, i) => {
+            const d = videoDuration(v);
+            return (
+              <StaggerItem key={`${i}-${v.youtubeId}`}>
+                <div className="h-full overflow-hidden rounded-xl border border-line bg-card shadow-sm">
+                  <YouTubeVideo id={v.youtubeId} title={videoTitle(v)} />
+                  <div className="p-4">
+                    <h3 className="font-semibold leading-snug text-heading">{videoTitle(v)}</h3>
+                    {d && <p className="mt-1 text-sm text-muted">{d}</p>}
+                  </div>
+                </div>
+              </StaggerItem>
+            );
+          })}
+        </Stagger>
+      </section>
 
       {/* Final CTA — same navy gradient as the hero */}
       <section className="mx-auto max-w-6xl px-4 pb-16">

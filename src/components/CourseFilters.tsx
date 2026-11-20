@@ -4,38 +4,9 @@ import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { categories, courseTypes, courses, languages } from "@/data/courses";
 import CourseCard from "./CourseCard";
+import FilterSelect, { FILTER_ALL } from "./FilterSelect";
 
-const ALL = "all";
-
-function Select({
-  label,
-  value,
-  onChange,
-  options,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  options: { value: string; label: string }[];
-}) {
-  return (
-    <label className="flex flex-col gap-1 text-sm font-medium text-heading">
-      {label}
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="rounded-lg border border-line bg-card px-3 py-2 text-heading transition-colors duration-200 focus:border-teal-text focus:outline-none focus:ring-2 focus:ring-cyan/40"
-      >
-        <option value={ALL}>All</option>
-        {options.map((o) => (
-          <option key={o.value} value={o.value}>
-            {o.label}
-          </option>
-        ))}
-      </select>
-    </label>
-  );
-}
+const ALL = FILTER_ALL;
 
 export default function CourseFilters() {
   const [category, setCategory] = useState(ALL);
@@ -58,19 +29,19 @@ export default function CourseFilters() {
   return (
     <>
       <div className="mt-6 grid grid-cols-1 gap-4 rounded-xl border border-line bg-card p-4 sm:grid-cols-4 sm:items-end">
-        <Select
+        <FilterSelect
           label="Category"
           value={category}
           onChange={setCategory}
           options={categories.map((c) => ({ value: c, label: c }))}
         />
-        <Select
+        <FilterSelect
           label="Language"
           value={language}
           onChange={setLanguage}
           options={languages.map((l) => ({ value: l, label: l }))}
         />
-        <Select
+        <FilterSelect
           label="Type"
           value={type}
           onChange={setType}
