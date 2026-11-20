@@ -65,7 +65,11 @@ export default async function CourseDetailPage(props: PageProps<"/courses/[slug]
         <Reveal className="lg:order-2">
           <aside className="lg:sticky lg:top-24">
             <div className="overflow-hidden rounded-xl border border-line bg-card shadow-sm">
-              <Thumbnail label={course.thumbnailLabel} />
+              <Thumbnail
+                label={course.thumbnailLabel}
+                sources={[course.thumbnail]}
+                sizes="(min-width: 1024px) 33vw, 100vw"
+              />
               <div className="space-y-4 p-5">
                 <Price course={course} size="lg" />
                 <button type="button" disabled title="Payments coming soon" className="btn-primary w-full">

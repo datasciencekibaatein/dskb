@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { type FreeVideo, isPlaceholder, videoDuration, videoTitle } from "@/data/youtube";
+import SmartImage from "./SmartImage";
 import YouTubeVideo from "./YouTubeVideo";
 
 // Main player + ordered video list. Clicking a video in the list loads it in
@@ -99,19 +100,31 @@ export default function PlaylistPlayer({ videos }: { videos: FreeVideo[] }) {
                     type="button"
                     onClick={() => play(i)}
                     aria-current={isActive ? "true" : undefined}
-                    className={`flex w-full items-start gap-3 border-l-2 px-5 py-3 text-left text-sm transition-colors duration-200 ${
+                    className={`flex w-full items-start gap-3 border-l-2 px-4 py-3 text-left text-sm transition-colors duration-200 ${
                       isActive ? "border-cyan bg-subtle" : "border-transparent hover:bg-subtle"
                     }`}
                   >
-                    <span
-                      className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-semibold ${
-                        isActive ? "bg-cyan text-navy-950" : "bg-subtle text-body ring-1 ring-line"
-                      }`}
-                    >
-                      {isActive ? "▶" : i + 1}
+                    {/* Small thumbnail (hqdefault) with the video number on top */}
+                    <span className="bg-thumb-gradient relative aspect-video w-24 shrink-0 overflow-hidden rounded-md">
+                      {!isPlaceholder(v.youtubeId) && (
+                        <SmartImage
+                          sources={[`https://i.ytimg.com/vi/${v.youtubeId}/hqdefault.jpg`]}
+                          sizes="96px"
+                        />
+                      )}
+                      <span
+                        className={`absolute bottom-1 left-1 grid h-5 min-w-5 place-items-center rounded px-1 text-[11px] font-semibold ${
+                          isActive ? "bg-cyan text-navy-950" : "bg-navy-950/85 text-white"
+                        }`}
+                      >
+                        {isActive ? "▶" : i + 1}
+                      </span>
                     </span>
-                    <span className="flex-1">
-                      <span className={`block ${isActive ? "font-semibold text-heading" : "text-body"}`}>
+                    <span className="min-w-0 flex-1">
+                      <span
+                        className={`line-clamp-2 ${isActive ? "font-semibold text-heading" : "text-body"}`}
+                        title={videoTitle(v)}
+                      >
                         {videoTitle(v)}
                       </span>
                       {d && <span className="mt-0.5 block text-xs text-muted">{d}</span>}

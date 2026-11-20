@@ -15,7 +15,9 @@ export default function Badge({
   variant?: keyof typeof styles;
 }) {
   return (
-    <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${styles[variant]}`}>
+    <span
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${styles[variant]}`}
+    >
       {children}
     </span>
   );

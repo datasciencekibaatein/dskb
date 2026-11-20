@@ -33,7 +33,7 @@ export interface Course {
   status: CourseStatus;
   priceINR: number;
   originalPriceINR?: number; // shown struck-through if discounted
-  thumbnail: string; // placeholder path in /public/thumbnails
+  thumbnail: string; // image in /public/thumbnails (16:9, e.g. 1280×720 .webp); placeholder shown until it exists
   thumbnailLabel: string; // short text shown on the thumbnail placeholder
   instructor: string;
   whatYouWillLearn: string[];
@@ -57,7 +57,7 @@ export const courses: Course[] = [
     status: "published",
     priceINR: 499,
     originalPriceINR: 1499,
-    thumbnail: "/thumbnails/python.png",
+    thumbnail: "/thumbnails/python.webp",
     thumbnailLabel: "Python",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
@@ -104,7 +104,7 @@ export const courses: Course[] = [
     status: "published",
     priceINR: 699,
     originalPriceINR: 1999,
-    thumbnail: "/thumbnails/numpy-pandas.png",
+    thumbnail: "/thumbnails/numpy-pandas.webp",
     thumbnailLabel: "NumPy & Pandas",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
@@ -150,7 +150,7 @@ export const courses: Course[] = [
     status: "published",
     priceINR: 599,
     originalPriceINR: 1499,
-    thumbnail: "/thumbnails/visualization.png",
+    thumbnail: "/thumbnails/visualization.webp",
     thumbnailLabel: "Visualization",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
@@ -193,7 +193,7 @@ export const courses: Course[] = [
     status: "coming-soon",
     priceINR: 799,
     originalPriceINR: 1999,
-    thumbnail: "/thumbnails/feature-engineering.png",
+    thumbnail: "/thumbnails/feature-engineering.webp",
     thumbnailLabel: "Feature Engineering",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
@@ -240,7 +240,7 @@ export const courses: Course[] = [
     status: "coming-soon",
     priceINR: 1999,
     originalPriceINR: 4999,
-    thumbnail: "/thumbnails/machine-learning.png",
+    thumbnail: "/thumbnails/machine-learning.webp",
     thumbnailLabel: "Machine Learning",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
@@ -291,7 +291,7 @@ export const courses: Course[] = [
     status: "coming-soon",
     priceINR: 2499,
     originalPriceINR: 5999,
-    thumbnail: "/thumbnails/deep-learning.png",
+    thumbnail: "/thumbnails/deep-learning.webp",
     thumbnailLabel: "Deep Learning",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
@@ -345,7 +345,7 @@ export const courses: Course[] = [
     status: "published",
     priceINR: 4999,
     originalPriceINR: 9999,
-    thumbnail: "/thumbnails/bootcamp.png",
+    thumbnail: "/thumbnails/bootcamp.webp",
     thumbnailLabel: "Live Bootcamp",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [

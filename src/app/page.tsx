@@ -117,7 +117,11 @@ export default function HomePage() {
             return (
               <StaggerItem key={`${i}-${v.youtubeId}`}>
                 <div className="h-full overflow-hidden rounded-xl border border-line bg-card shadow-sm">
-                  <YouTubeVideo id={v.youtubeId} title={videoTitle(v)} />
+                  <YouTubeVideo
+                    id={v.youtubeId}
+                    title={videoTitle(v)}
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  />
                   <div className="p-4">
                     <h3 className="font-semibold leading-snug text-heading">{videoTitle(v)}</h3>
                     {d && <p className="mt-1 text-sm text-muted">{d}</p>}

@@ -41,12 +41,22 @@ export const playlists: Playlist[] = [
     topic: "Python",
     language: "Hindi",
     channel: "DataScience ki Baatein",
-    playlistId: "REPLACE_PYTHON_PLAYLIST_ID",
+    playlistId: "PL1K1yhaDyRQAeJ3SA8AsGnz6zV1rMSO9q",
     status: "available",
     relatedCourseSlug: "python-for-data-science-hindi",
     videos: [
-      { youtubeId: "REPLACE_VIDEO_ID", title: "REPLACE: Video 1 title", duration: "00:00" },
-      { youtubeId: "REPLACE_VIDEO_ID", title: "REPLACE: Video 2 title", duration: "00:00" },
+      { youtubeId: "LNtWVP7zcOs", title: "Python Variables & Data Types in Hindi | Numeric, String, Boolean, None | Complete Beginner Tutorial", duration: "22:30" },
+      { youtubeId: "5c7SEGvqZpE", title: "Python Operators Explained in Hindi | Arithmetic, Comparison, Logical, Assignment", duration: "23:54" },
+      { youtubeId: "3FACYVI7FhU", title: "Python If-Else Statements Explained in Hindi | Conditional Statements | Beginner Tutorial", duration: "29:36" },
+      { youtubeId: "T739dQIBrrY", title: "Python Data Structures Explained in Hindi | Lists, Tuples, Sets, Dictionaries | Complete Tutorial", duration: "31:31" },
+      { youtubeId: "rR0Hi0iecb0", title: "Python Loops Complete Tutorial in Hindi | For, While, Range, Zip, Enumerate, Break, Continue", duration: "30:43" },
+      { youtubeId: "lb6Q8N0AqA8", title: "Python Strings Complete Tutorial in Hindi", duration: "35:02" },
+      { youtubeId: "XJwflc1tjQ4", title: "Python Functions Complete Tutorial in Hindi | def, return, *args, **kwargs, lambda, recursion", duration: "42:04" },
+      { youtubeId: "X_r2_h3cz0c", title: "Python File Handling Complete Tutorial in Hindi | Text Files, CSV, JSON | Beginner to Pro", duration: "46:35" },
+      { youtubeId: "s7mca5A3uoI", title: "Python Exception Handling Complete Tutorial in Hindi | try, except, else, finally, raise", duration: "48:42" },
+      { youtubeId: "Fs26rXPAp9I", title: "Python Modules and Packages in Hindi | import, math, datetime, User-Defined Module", duration: "58:58" },
+      { youtubeId: "eprheBGqRdA", title: "Student Management System in Python | Final Project – Python for Data Science Series", duration: "1:51:23" },
+
     ],
   },
   {
@@ -109,14 +119,14 @@ export const getPlaylistBySlug = (slug: string) => playlists.find((p) => p.slug 
 
 // Latest videos shown on the Home page (newest first). Update when you upload.
 export const latestVideos: FreeVideo[] = [
-  { youtubeId: "REPLACE_VIDEO_ID", title: "REPLACE: Latest video title", duration: "00:00" },
-  { youtubeId: "REPLACE_VIDEO_ID", title: "REPLACE: 2nd latest video", duration: "00:00" },
-  { youtubeId: "REPLACE_VIDEO_ID", title: "REPLACE: 3rd latest video", duration: "00:00" },
+  { youtubeId: "T6HqelCNohE", title: "Choosing the Right Chart in Hindi | Retail Sales Dashboard Project | Data Visualization", duration: "1:28:42" },
+  { youtubeId: "Qy_Clu3hEec", title: "Pandas EDA Project in Hindi | E-Commerce Dataset Analysis | Complete Data Science Project", duration: "52:47" },
+  { youtubeId: "aN37MZfbe1M", title: "Numpy Series Finale in Hindi | Reshaping + Complete Mini Project + Pandas Bridge Tutorial", duration: "41:48" },
 ];
 
 export const YOUTUBE_CHANNELS = {
-  hindi: "REPLACE_HINDI_CHANNEL_URL", // e.g. https://www.youtube.com/@datasciencekibaatein
-  english: "REPLACE_ENGLISH_CHANNEL_URL",
+  hindi: "https://www.youtube.com/@datasciencekibaatein", // e.g. https://www.youtube.com/@datasciencekibaatein
+  english: "https://www.youtube.com/@DSWithDhruv",
 };
 // ---------- Helpers (used by the pages) ----------
 
@@ -148,3 +158,15 @@ export const subscribeUrl = (channelUrl: string) =>
 // Link to a playlist on YouTube (null while it's still a placeholder).
 export const playlistUrl = (p: Playlist) =>
   isPlaceholder(p.playlistId) ? null : `https://www.youtube.com/playlist?list=${p.playlistId}`;
+
+// YouTube thumbnail URLs to try in order: HD first, then the always-available hqdefault.
+export const youtubeThumbs = (youtubeId: string) => [
+  `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`,
+  `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`,
+];
+
+// Thumbnail URLs for a playlist card: its first real video (empty while all are placeholders).
+export const playlistThumbs = (p: Playlist) => {
+  const first = realVideos(p)[0];
+  return first ? youtubeThumbs(first.youtubeId) : [];
+};

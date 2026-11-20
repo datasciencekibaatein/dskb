@@ -33,3 +33,13 @@ put the file in `public/` (e.g. `public/logo.png`) and set `logo.imageSrc: "/log
 
 Add an object to the `courses` array in `src/data/courses.ts`. TypeScript will tell you
 if a required field is missing. The page `/courses/<slug>` is created automatically.
+
+## Thumbnails
+
+- **Courses:** put a 16:9 image (1280×720 `.webp` recommended) in `public/thumbnails/`
+  with the file name from the course's `thumbnail` field in `src/data/courses.ts`:
+  `python.webp`, `numpy-pandas.webp`, `visualization.webp`, `feature-engineering.webp`,
+  `machine-learning.webp`, `deep-learning.webp`, `bootcamp.webp`.
+  Until a file exists, the navy placeholder with `thumbnailLabel` is shown.
+- **YouTube videos / playlists:** thumbnails come from YouTube automatically
+  (`i.ytimg.com`, HD first, then standard). Nothing to upload.

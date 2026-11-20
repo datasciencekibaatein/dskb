@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { type Playlist, realVideos } from "@/data/youtube";
+import { type Playlist, playlistThumbs, realVideos } from "@/data/youtube";
 import Thumbnail from "./Thumbnail";
 import Badge from "./Badge";
 
@@ -14,12 +14,12 @@ export default function PlaylistCard({ playlist }: { playlist: Playlist }) {
       className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-card shadow-sm transition-[transform,box-shadow,border-color] duration-300 ease-out hover:border-cyan/50 hover:shadow-[0_14px_32px_-12px_rgba(34,211,238,0.45)] motion-safe:hover:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-text"
     >
       <div className="relative">
-        <Thumbnail label={playlist.topic} />
+        <Thumbnail label={playlist.title} sources={playlistThumbs(playlist)} />
         <div className="absolute left-3 top-3 flex gap-2">
           {playlist.status === "in-progress" && <Badge variant="inProgress">● In progress</Badge>}
           {comingSoon && <Badge variant="comingSoon">Coming soon</Badge>}
         </div>
-        <span className="absolute right-3 top-3 rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-semibold text-white ring-1 ring-white/20">
+        <span className="absolute right-3 top-3 rounded-full bg-navy-950/85 px-2.5 py-0.5 text-xs font-semibold text-white ring-1 ring-white/20">
           Free
         </span>
       </div>
