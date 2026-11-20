@@ -11,7 +11,9 @@ import YouTubeVideo from "./YouTubeVideo";
 // video has those links.
 export default function PlaylistPlayer({ videos }: { videos: FreeVideo[] }) {
   const [active, setActive] = useState(0);
-  const [picked, setPicked] = useState(false); // true after the viewer chooses a video
+  // Increases on every click in the list / Previous / Next — tells the player to start.
+  // (Never set on mount, so returning to this page never auto-plays.)
+  const [playRequest, setPlayRequest] = useState(0);
   const playerRef = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
 
@@ -22,7 +24,7 @@ export default function PlaylistPlayer({ videos }: { videos: FreeVideo[] }) {
 
   const play = (i: number) => {
     setActive(i);
-    setPicked(true);
+    setPlayRequest((n) => n + 1);
     // On small screens the list is below the player — bring the player into view.
     const top = playerRef.current?.getBoundingClientRect().top ?? 0;
     if (top < 0 || top > window.innerHeight * 0.5) {
@@ -38,12 +40,7 @@ export default function PlaylistPlayer({ videos }: { videos: FreeVideo[] }) {
       {/* Player */}
       <div ref={playerRef} className="scroll-mt-24 lg:col-span-2">
         <div className="overflow-hidden rounded-xl border border-line bg-card shadow-sm">
-          <YouTubeVideo
-            key={`${active}-${video.youtubeId}`}
-            id={video.youtubeId}
-            title={videoTitle(video)}
-            autoplay={picked}
-          />
+          <YouTubeVideo id={video.youtubeId} title={videoTitle(video)} playRequest={playRequest} />
           <div className="space-y-3 p-5">
             <p className="text-xs font-semibold uppercase tracking-wider text-teal-text">
               Video {active + 1} of {videos.length}
