@@ -104,7 +104,7 @@ export const courses: Course[] = [
     status: "published",
     priceINR: 699,
     originalPriceINR: 1999,
-    thumbnail: "/thumbnails/numpy-pandas.png",
+    thumbnail: "/thumbnails/NumPy&Pandas.png",
     thumbnailLabel: "NumPy & Pandas",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
@@ -150,7 +150,7 @@ export const courses: Course[] = [
     status: "published",
     priceINR: 599,
     originalPriceINR: 1499,
-    thumbnail: "/thumbnails/visualization.png",
+    thumbnail: "/thumbnails/DataVisualization.png",
     thumbnailLabel: "Visualization",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
@@ -193,7 +193,7 @@ export const courses: Course[] = [
     status: "coming-soon",
     priceINR: 799,
     originalPriceINR: 1999,
-    thumbnail: "/thumbnails/feature-engineering.png",
+    thumbnail: "/thumbnails/featureengineering.png",
     thumbnailLabel: "Feature Engineering",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
@@ -345,7 +345,7 @@ export const courses: Course[] = [
     status: "published",
     priceINR: 4999,
     originalPriceINR: 9999,
-    thumbnail: "/thumbnails/bootcamp.png",
+    thumbnail: "/thumbnails/LiveDataScienceBootcamp.png",
     thumbnailLabel: "Live Bootcamp",
     instructor: INSTRUCTOR,
     whatYouWillLearn: [
